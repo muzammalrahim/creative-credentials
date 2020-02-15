@@ -4,11 +4,11 @@ import { Subscription } from 'rxjs';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 
 @Component({
-  selector: 'app-companies-table',
-  templateUrl: './companies-table.component.html',
-  styleUrls: ['./companies-table.component.scss']
+  selector: 'app-project-table',
+  templateUrl: './project-table.component.html',
+  styleUrls: ['./project-table.component.scss']
 })
-export class CompaniesTableComponent implements OnInit {
+export class ProjectTableComponent implements OnInit {
 
   @Input() incommingData: any;
   displayedColumns: string[] =  ['$key', 'clientName', 'clientDetails'];

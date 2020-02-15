@@ -24,10 +24,15 @@ export class SignUpComponent implements OnInit {
   @ViewChild('show_company_list', { static: true }) public show_company_list: ElementRef;
 
   @ViewChild('content', { static: true }) public content_: ElementRef;
+  message: any;
+  companyList: any;
 
   constructor(private api: ApiWrapperService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
+    this.api.get(environment.companies).subscribe(res => {
+this.companyList=res.companyList;
+    });
   }
 
   onSelect(data) {
@@ -46,7 +51,7 @@ export class SignUpComponent implements OnInit {
   }
   signUp(myform: NgForm) {
     if (this.data == "Admin") {
-      delete myform.value.company_list;
+      delete myform.value.company_id;
     }
     if (this.data == "User") {
       delete myform.value.company_name;
@@ -55,34 +60,35 @@ export class SignUpComponent implements OnInit {
       alert("password don't match");
       return;
     } else {
- 
+console.log(myform.value);
       this.api.post(environment.signup, myform.value).subscribe(data => {
-        console.log(data);
+
+
         this.open(this.content_);
         this.router.navigate(['login']);
+      });
+    }
+  }
+  closeResult: string;
+
+
+
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-}
-closeResult: string;
-
-
-
-open(content) {
-  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  });
-}
 
   private getDismissReason(reason: any): string {
-  if (reason === ModalDismissReasons.ESC) {
-    return 'by pressing ESC';
-  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-    return 'by clicking on a backdrop';
-  } else {
-    return `with: ${reason}`;
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
-}
 
 }

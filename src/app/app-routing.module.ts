@@ -1,5 +1,4 @@
-import { AddCompaniesComponent } from './modules/landing-page/companies/add-companies/add-companies.component';
-import { CompaniesComponent } from './modules/landing-page/companies/companies.component';
+
 import { AddCredentialsComponent } from './modules/landing-page/credentials/add-credentials/add-credentials.component';
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
 import { ClientsComponent } from './modules/landing-page/clients/clients.component';
@@ -11,6 +10,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignUpComponent } from './modules/auth/sign-up/sign-up.component';
 import { CredentialsComponent } from './modules/landing-page/credentials/credentials.component';
+import { AddProjectComponent } from './modules/landing-page/projects/add-project/add-project.component';
+import { ProjectTableComponent } from './modules/landing-page/projects/project-table/project-table.component';
+import { ProjectsComponent } from './modules/landing-page/projects/projects.component';
 
 
 const routes: Routes = [
@@ -28,8 +30,9 @@ const routes: Routes = [
     {path:'addcredentials', component:AddCredentialsComponent},
     {path:'credentials', component:CredentialsComponent},
 
-    {path:'companies', component:CompaniesComponent},
-    {path:'addcompanies', component:AddCompaniesComponent},
+    {path:'addprojects', component:AddProjectComponent},
+    {path:'projects', component:ProjectsComponent},
+    
   ]},
 ];
 

@@ -1,4 +1,5 @@
 const SignUp = require("../models/signup");
+const Comapny = require("../models/company");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
@@ -16,21 +17,34 @@ if(existing_user){
 
   var pass = await bcrypt.hash(req.body.password, 10);
 
-
+var status;
+if (req.body.role === "Admin"){
+  status=true;
+}
+if(req.body.role ==="User"){
+  status=false;
+}
 
   var data = {
       "name":  req.body.name,
       "email":email,
       "role":req.body.role,
       "company_name":req.body.company_name,
-      "company_list":req.body.company_list,
+      "company_id":req.body.company_id,
       "password":pass,
-      "phone":req.body.phone
+      "phone":req.body.phone,
+      "status":status
   }
+
+
+  
 const addUser = await SignUp.create(data);
 if (!addUser) {
 res.status(500).json("No user Added")
 
+}
+if(req.body.company_name){
+Comapny.create({name:req.body.company_name,user_id:addUser._id});
 }
 res.status(200).json("User Created");
 }

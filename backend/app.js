@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const authroutes =require("./routes/auth")
-
+const companyroutes =require("./routes/company")
 
 const app = express();
 //QT44EaNJfnmWedIs
@@ -40,5 +40,5 @@ app.use((req, res, next) => {
 
 
 app.use("/api", authroutes);
-
+app.use("/api", companyroutes);
 module.exports = app;

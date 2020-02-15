@@ -9,7 +9,7 @@ export const environment = {
   production: false,
   login: `${baseUrl}login`,
   signup: `${baseUrl}signup`,
-
+  companies: `${baseUrl}companies`,
 };
 
 /*

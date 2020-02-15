@@ -12,8 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './modules/landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -29,15 +28,19 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
 import { CredentialsComponent } from './modules/landing-page/credentials/credentials.component';
 import { AddCredentialsComponent } from './modules/landing-page/credentials/add-credentials/add-credentials.component';
 import { CredentialsTableComponent } from './modules/landing-page/credentials/credentials-table/credentials-table.component';
-import { CompaniesComponent } from './modules/landing-page/companies/companies.component';
-import { AddCompaniesComponent } from './modules/landing-page/companies/add-companies/add-companies.component';
-import { CompaniesTableComponent } from './modules/landing-page/companies/companies-table/companies-table.component';
+
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectsComponent } from './modules/landing-page/projects/projects.component';
+import { AddProjectComponent } from './modules/landing-page/projects/add-project/add-project.component';
+import { ProjectTableComponent } from './modules/landing-page/projects/project-table/project-table.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +56,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     CredentialsComponent,
     AddCredentialsComponent,
     CredentialsTableComponent,
-    CompaniesComponent,
-    AddCompaniesComponent,
-    CompaniesTableComponent
+    ProjectsComponent,
+    AddProjectComponent,
+    ProjectTableComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     MatSelectModule,
     NgbModalModule,
+    MatProgressSpinnerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

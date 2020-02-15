@@ -12,22 +12,7 @@ cards;
 
   ngOnInit() {
     this.cards = [
-      {
-        icon: faUserFriends,
-        heading: 'Clients',
-        background: '#00008b',
-        routerLink: '../clients',
-        stat: [
-          {
-            statName: 'Total Clients',
-            statValue: ''
-          },
-          {
-            statName: 'Total Tasks',
-            statValue: ''
-          }
-        ]
-      },
+
       // {
       //   icon: faMoneyCheck,
       //   heading: 'Revenue',
@@ -43,7 +28,7 @@ cards;
       // },
       {
         icon: faAddressCard,
-        heading: 'Credentials',
+        heading: 'Project Credentials',
         background: '#013220',
         routerLink: '../credentials',
         stat: [
@@ -55,14 +40,30 @@ cards;
       },
       {
         icon: faAddressCard,
-        heading: 'Companies',
+        heading: 'Projects',
         background: '#FFA500',
-        routerLink: '../companies',
+        routerLink: '../projects',
         stat: [
           // {
           //   statName: 'Total Revenue',
           //   statValue: 33397
           // },
+        ]
+      },
+      {
+        icon: faUserFriends,
+        heading: 'Clients',
+        background: '#00008b',
+        routerLink: '../clients',
+        stat: [
+          {
+            statName: 'Total Clients',
+            statValue: ''
+          },
+          {
+            statName: 'Total Tasks',
+            statValue: ''
+          }
         ]
       },
 

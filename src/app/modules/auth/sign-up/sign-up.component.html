@@ -2,7 +2,7 @@
 <div class="login-page" >
   <div class="row justify-content-md-center">
       <div class="col-md-4">
-<span class="font-size">Creative Credentials Sign Up</span>
+<span class="font-size"><u>Creative Credentials Sign Up</u></span>
           <form #myForm="ngForm"  role="form">
               <div class="form-content">
                   <div class="form-group">
@@ -29,9 +29,9 @@
                   <div class="form-group" hidden #show_company_list>
 
 
-                      <mat-select class=" mat-elevation-z8 border " ngModel name='company_list' #company_list='ngModel' style="background-color:white;padding:7px" placeholder="Company List">
-                        <mat-option *ngFor="let select of options" [value]="select.role">
-                          {{select.role}}
+                      <mat-select class=" mat-elevation-z8 border " ngModel name='company_id' #company_id='ngModel' style="background-color:white;padding:7px" placeholder="Company List">
+                        <mat-option *ngFor="let select of companyList" [value]="select._id">
+                          {{select.name}}
                         </mat-option>
                       </mat-select>
 
@@ -59,6 +59,7 @@
 </div>
 
 <ng-template #content let-modal>
+
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Message</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -66,11 +67,13 @@
     </button>
   </div>
   <div class="modal-body">
-<h3>Successfully Signed Up</h3>
+<h3>Successfully Registered</h3>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">OK</button>
   </div>
+
+
 </ng-template>
 
 
