@@ -1,0 +1,25 @@
+<h3 class="main-heading">Add New Companies</h3>
+<div class="form-wrapper mat-elevation-z8">
+  <div class="form-content">
+
+    <form [formGroup]="companiesForm" (ngSubmit)="submit()">
+        <div class="fields-wrapper">
+            <div class="field">
+              <mat-form-field><input formControlName="title"  matInput placeholder="Title" type="text"></mat-form-field>
+            </div>
+            <div class="field">
+                <mat-form-field><input  formControlName="users" matInput placeholder="User" type="text"  ></mat-form-field>
+            </div>
+
+            <div class="field">
+              <mat-form-field><input  formControlName="administrator" matInput placeholder="Administrator" type="text"  ></mat-form-field>
+          </div>
+
+            <div class="button-wrapper">
+              <button mat-raised-button type="submit" color="primary">Save</button>
+          </div>
+
+        </div>
+    </form>
+  </div>
+</div>

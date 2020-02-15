@@ -1,0 +1,72 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button class="bars" mat-icon-button (click)="snav.toggle()">
+      <fa-icon  [icon]="faBars" size="2x"></fa-icon>
+    </button>
+    <a [routerLink]="['dash']" [style.color]="'white'">
+      <h6 class="example-app-name ml-2 ">Creative Credentials</h6>
+    </a>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list>
+        <div class="list-items">
+          <mat-list-item
+            [routerLink]="['dash']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActive]="['active']"
+          >
+            <span><fa-icon [icon]="faHome" size="1x"></fa-icon></span>
+            <span class="pl-3">DashBoard</span>
+          </mat-list-item>
+
+          <mat-list-item
+            [routerLink]="['cities']"
+            [routerLinkActive]="['active']"
+          >
+            <span><fa-icon [icon]="faUserFriends" size="1x"></fa-icon></span>
+            <span class="pl-3">Clients</span>
+          </mat-list-item>
+
+          <mat-list-item
+            [routerLink]="['googlemap']"
+            [routerLinkActive]="['active']"
+          >
+            <span><fa-icon [icon]="faAddressCard" size="1x"></fa-icon></span>
+            <span class="pl-3">Credentials</span>
+          </mat-list-item>
+            <div>
+          <button
+            class="w-100 p-1 display-4 bottom"
+            mat-raised-button
+            color="warn"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+
+
+
+        </div>
+
+      </div>
+
+
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

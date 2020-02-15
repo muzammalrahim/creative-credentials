@@ -1,0 +1,23 @@
+@import "../login/login.component.scss";
+
+.font-size{
+  font-size: 20px;
+  color:white;
+  border: 2px solid gray;
+  padding:30px 60px;
+}
+::placeholder{
+  color:white;
+
+  font-size:16px;
+}
+
+@media only screen and (max-width: 600px) {
+  .font-size{
+    font-size: 14px;
+    color:white;
+    border: transparent;
+    padding:0px 0px;
+
+  }
+}

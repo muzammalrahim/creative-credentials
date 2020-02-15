@@ -1,0 +1,8 @@
+<h3 class="main-heading">Companies List</h3>
+<div class="main-button-wrapper">
+        <div class="buttons">
+            <button mat-raised-button [routerLink]="['../addcompanies']" color="primary" > <fa-icon [icon]="faPlus"></fa-icon> Add New Company</button>
+        </div>
+    </div>
+
+<app-clients-table  [incommingData]="list"></app-clients-table>

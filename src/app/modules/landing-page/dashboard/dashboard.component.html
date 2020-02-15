@@ -1,0 +1,6 @@
+<div class='dashcards'>
+  <div class='dashcards-grid' *ngFor="let card of cards">
+<app-cards [routerLink]="[card.routerLink]" [statCardData]="card"></app-cards>
+</div>
+</div>
+
