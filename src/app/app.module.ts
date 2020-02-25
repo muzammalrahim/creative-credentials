@@ -31,6 +31,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
 import { CredentialsComponent } from './modules/landing-page/credentials/credentials.component';
@@ -41,6 +45,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectsComponent } from './modules/landing-page/projects/projects.component';
 import { AddProjectComponent } from './modules/landing-page/projects/add-project/add-project.component';
 import { ProjectTableComponent } from './modules/landing-page/projects/project-table/project-table.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,8 @@ import { ProjectTableComponent } from './modules/landing-page/projects/project-t
     CredentialsTableComponent,
     ProjectsComponent,
     AddProjectComponent,
-    ProjectTableComponent
+    ProjectTableComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -80,7 +86,10 @@ import { ProjectTableComponent } from './modules/landing-page/projects/project-t
     MatSelectModule,
     NgbModalModule,
     MatProgressSpinnerModule,
-    
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatMenuModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

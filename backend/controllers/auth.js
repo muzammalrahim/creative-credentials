@@ -37,7 +37,7 @@ if(req.body.role ==="User"){
   }
 
 
-  
+
 const addUser = await SignUp.create(data);
 if (!addUser) {
 res.status(500).json("No user Added")
@@ -69,7 +69,7 @@ const login =   (req,res) => {
         });
       }
       fetchedUser = user;
-    
+
 
       return  bcrypt.compare(req.body.password, user.password);
 
@@ -82,6 +82,13 @@ const login =   (req,res) => {
           message: "Auth failed"
         });
       }
+
+      if(fetchedUser.status == false){
+        return res.status(401).json({
+          message: "Waiting for admin Approval"
+        })
+      }
+
   /*  var x=  function e(){
         return req.body.email;
       }*/

@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+import { async } from '@angular/core/testing';
 import { ApiWrapperService } from './../../../services/apiwrapperservice';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -26,23 +28,30 @@ export class SignUpComponent implements OnInit {
   @ViewChild('content', { static: true }) public content_: ElementRef;
   message: any;
   companyList: any;
+  checker: boolean;
 
   constructor(private api: ApiWrapperService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
+
     this.api.get(environment.companies).subscribe(res => {
-this.companyList=res.companyList;
+      this.companyList = res.companyList;
+
     });
   }
+  optSelected(data) {
+    let selectedValue = this.companyList.find(x => x == data);
+    console.log("::::", selectedValue);
+  }
+  displayFn(Subject) {
 
+    return Subject ? Subject.name : undefined;
+  }
   onSelect(data) {
     this.data = data;
     if (data == 'Admin') {
       this.company_name.nativeElement.hidden = false;
       this.show_company_list.nativeElement.hidden = true;
-
-
-
     }
     if (data == 'User') {
       this.company_name.nativeElement.hidden = true;
@@ -55,15 +64,16 @@ this.companyList=res.companyList;
     }
     if (this.data == "User") {
       delete myform.value.company_name;
+
+       myform.value.company_id=myform.value.company_id._id;
     }
     if (myform.value.password != myform.value.repeat_password) {
       alert("password don't match");
       return;
     } else {
-console.log(myform.value);
+      console.log(myform.value);
+      delete myform.value.repeat_password;
       this.api.post(environment.signup, myform.value).subscribe(data => {
-
-
         this.open(this.content_);
         this.router.navigate(['login']);
       });

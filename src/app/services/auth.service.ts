@@ -17,7 +17,9 @@ export class AuthService {
   ) { }
   private isAuthenticated = false;
   private token: string;
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new Subject<any>();
+
+
 
   getToken() {
     return this.token;
@@ -39,7 +41,7 @@ export class AuthService {
         this.token = token;
         if (token) {
           this.isAuthenticated = true;
-          this.authStatusListener.next(true);
+          this.authStatusListener.next({status:true,message:response.message});
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(response.fetchedUser));
           this.router.navigate(["landingPage"]);
@@ -47,7 +49,7 @@ export class AuthService {
       },
       (err: any) => {
         console.log("error_message : ", err.error);
-        this.authStatusListener.next(false);
+        this.authStatusListener.next({status:false, message: err.error});
       }
     );
   }

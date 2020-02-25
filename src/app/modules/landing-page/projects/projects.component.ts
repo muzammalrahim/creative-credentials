@@ -8,6 +8,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProjectsComponent implements OnInit {
   faPlus = faPlus;
+  list='';
   constructor() { }
 
   ngOnInit() {

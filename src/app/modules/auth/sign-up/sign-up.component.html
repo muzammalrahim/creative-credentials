@@ -1,60 +1,75 @@
-
-<div class="login-page" >
+<div class="login-page">
   <div class="row justify-content-md-center">
-      <div class="col-md-4">
-<span class="font-size"><u>Creative Credentials Sign Up</u></span>
-          <form #myForm="ngForm"  role="form">
-              <div class="form-content">
-                  <div class="form-group">
-                      <input type="text" ngModel name='name' #name='ngModel' class="form-control input-underline input-lg"  placeholder="Full Name">
-                  </div>
+    <div class="col-md-4">
+      <span class="font-size"><u>Creative Credentials Sign Up</u></span>
+      <form #myForm="ngForm" role="form">
+        <div class="form-content">
+          <div class="form-group">
+            <input type="text" ngModel name='name' #name='ngModel' class="form-control input-underline input-lg"
+              placeholder="Full Name">
+          </div>
 
-                  <div class="form-group">
-                      <input type="text" ngModel name='email' #email='ngModel' class="form-control input-underline input-lg"  placeholder=" Email ">
-                  </div>
+          <div class="form-group">
+            <input type="text" ngModel name='email' #email='ngModel' class="form-control input-underline input-lg"
+              placeholder=" Email ">
+          </div>
 
-                  <div class="form-group">
-                    <mat-select (selectionChange)=onSelect($event.value) ngModel name='role' #role='ngModel' class=" mat-elevation-z8 border " style="background-color:white;padding:7px" placeholder="Please Select">
-                      <mat-option *ngFor="let select of options" [value]="select.role">
-                        {{select.role}}
-                      </mat-option>
-                    </mat-select>
-                    </div>
-
-
-                    <div class="form-group" hidden #company_name_div>
-                      <input type="text" ngModel name='company_name' #company_name='ngModel' class="form-control input-underline input-lg"  placeholder="Company Name" >
-                  </div>
-
-                  <div class="form-group" hidden #show_company_list>
+          <div class="form-group">
+            <mat-select (selectionChange)=onSelect($event.value) ngModel name='role' #role='ngModel'
+              class=" mat-elevation-z8 border " style="background-color:white;padding:7px" placeholder="Please Select">
+              <mat-option *ngFor="let select of options" [value]="select.role">
+                {{select.role}}
+              </mat-option>
+            </mat-select>
+          </div>
 
 
-                      <mat-select class=" mat-elevation-z8 border " ngModel name='company_id' #company_id='ngModel' style="background-color:white;padding:7px" placeholder="Company List">
+          <div class="form-group" hidden #company_name_div>
+            <input type="text" ngModel name='company_name' #company_name='ngModel'
+              class="form-control input-underline input-lg" placeholder="Company Name">
+          </div>
+
+          <div class="form-group" hidden #show_company_list>
+
+
+            <input type="text" placeholder="Select Company " aria-label="Number" matInput ngModel name='company_id'
+              #company_id='ngModel' (input)='optSelected($event.target.value)'
+              style="padding:7px 92px" placeholder="Company List" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+              (optionSelected)="optSelected($event.option.value)">
+              <mat-option *ngFor="let select of companyList | searchFilter: company_id.value" [value]="select">
+                {{select.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <!-- <mat-select class=" mat-elevation-z8 border " ngModel name='company_id' #company_id='ngModel' style="background-color:white;padding:7px" placeholder="Company List">
                         <mat-option *ngFor="let select of companyList" [value]="select._id">
                           {{select.name}}
                         </mat-option>
-                      </mat-select>
+                      </mat-select> -->
 
-                </div>
+          </div>
 
-                  <div class="form-group">
-                    <input type="text" ngModel name='phone' #phone='ngModel' class="form-control input-underline input-lg"  placeholder=" Phone No">
-                </div>
+          <div class="form-group">
+            <input type="text" ngModel name='phone' #phone='ngModel' class="form-control input-underline input-lg"
+              placeholder=" Phone No">
+          </div>
 
-                  <div class="form-group">
-                      <input type="password" ngModel name='password' #password='ngModel' class="form-control input-underline input-lg"  placeholder=" Password ">
-                  </div>
-                  <div class="form-group">
-                      <input type="password" ngModel name='repeat_password' #repeat_password='ngModel'  class="form-control input-underline input-lg" placeholder=" Repeat Password ">
-                  </div>
-              </div>
+          <div class="form-group">
+            <input type="password" ngModel name='password' #password='ngModel'
+              class="form-control input-underline input-lg" placeholder=" Password ">
+          </div>
+          <div class="form-group">
+            <input type="password" ngModel name='repeat_password' #repeat_password='ngModel'
+              class="form-control input-underline input-lg" placeholder=" Repeat Password ">
+          </div>
+        </div>
 
-              <a class="btn rounded-btn"  (click)="signUp(myForm)" [routerLink]="['/signup']">Register </a>&nbsp;
-              <a class="btn rounded-btn" [routerLink]="['/login']">Log in </a>
-          </form>
+        <a class="btn rounded-btn" (click)="signUp(myForm)" [routerLink]="['/signup']">Register </a>&nbsp;
+        <a class="btn rounded-btn" [routerLink]="['/login']">Log in </a>
+      </form>
 
-          <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
-      </div>
+      <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+    </div>
   </div>
 </div>
 
@@ -67,7 +82,7 @@
     </button>
   </div>
   <div class="modal-body">
-<h3>Successfully Registered</h3>
+    <h3>Successfully Registered</h3>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">OK</button>
@@ -75,7 +90,3 @@
 
 
 </ng-template>
-
-
-
-
