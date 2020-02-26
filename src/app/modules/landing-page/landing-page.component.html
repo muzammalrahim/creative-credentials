@@ -7,11 +7,15 @@
       <h6 class="example-app-name ml-2 ">Creative Credentials</h6>
     </a>
 <div class="badge" matBadge="15" matBadgeColor="warn">
+  <div class="company-name">
+  <h3>{{company_name.company_name}}</h3>
+</div>
 <fa-icon [matMenuTriggerFor]="menu"  [icon]="faHome" size='2x'></fa-icon>
 
 <mat-menu #menu="matMenu" >
-  <span mat-menu-item>Item 1</span>
-  <span mat-menu-item>Item 2</span>
+  <pre> Need Approval </pre>
+  <span mat-menu-item *ngFor="let f of numbers ">{{f}}</span>
+
 </mat-menu>
 </div>
   </mat-toolbar>

@@ -24,12 +24,12 @@ export class LoginComponent implements OnInit {
 login(myform : NgForm) {
 this.authService.login(myform.value);
 this.authService.getAuthStatusListener().subscribe(listner => {
-  console.log(listner);
+
   this.message = listner.message;
   if (listner.status == false) {
 this.open(this.content_);
 }
-})
+});
 
 }
 

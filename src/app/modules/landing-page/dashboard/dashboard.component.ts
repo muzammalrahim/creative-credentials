@@ -28,7 +28,19 @@ cards;
       // },
       {
         icon: faAddressCard,
-        heading: 'Project Credentials',
+        heading: ' Users',
+        background: '#800080',
+        routerLink: '../credentials',
+        stat: [
+          // {
+          //   statName: 'Total Revenue',
+          //   statValue: 33397
+          // },
+        ]
+      },
+      {
+        icon: faAddressCard,
+        heading: ' Credentials',
         background: '#013220',
         routerLink: '../credentials',
         stat: [

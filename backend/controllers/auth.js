@@ -4,65 +4,78 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
 const signup = async (req, res) => {
-  try{
+  try {
 
-  var email =req.body.email;
+    var email = req.body.email;
+    if (req.body.role === "Admin") {
+      var company_name = req.body.company_name.toLowerCase();
+    }
+    const existing_user = await SignUp.findOne({ email: email });
+
+    if (existing_user) {
+      res.status(500).json({ message: "User Already exists" });
+    } else {
+      if (req.body.role === "Admin") {
+        const existing_company = await SignUp.findOne({ company_name: company_name });
+        if (existing_company) {
+          return res.status(500).json({ message: "Company Already Exists" });
+        }
+      }
+      if (req.body.role === "User") {
+        const find_company = await Comapny.findOne({ _id: req.body.company_id });
+        if (!find_company ) {
+          return res.status(500).json({ message: "Please Choose Company from list" });
+        }
+      }
+      var pass = await bcrypt.hash(req.body.password, 10);
+
+      var status;
+      if (req.body.role === "Admin") {
+        status = true;
+      }
+      if (req.body.role === "User") {
+        status = false;
+      }
 
 
-const existing_user= await SignUp.findOne({email:email});
+      var data = {
+        "name": req.body.name,
+        "email": email,
+        "role": req.body.role,
+        "company_name": company_name,
+        "company_id": req.body.company_id,
+        "password": pass,
+        "phone": req.body.phone,
+        "status": status
+      }
 
-if(existing_user){
-  res.status(500).json("User Already exists");
-}else{
 
-  var pass = await bcrypt.hash(req.body.password, 10);
 
-var status;
-if (req.body.role === "Admin"){
-  status=true;
-}
-if(req.body.role ==="User"){
-  status=false;
-}
+      const addUser = await SignUp.create(data);
+      if (!addUser) {
+        res.status(500).json({ message: "No user Added" })
 
-  var data = {
-      "name":  req.body.name,
-      "email":email,
-      "role":req.body.role,
-      "company_name":req.body.company_name,
-      "company_id":req.body.company_id,
-      "password":pass,
-      "phone":req.body.phone,
-      "status":status
+      }
+      if (req.body.company_name) {
+        Comapny.create({ name: req.body.company_name, user_id: addUser._id });
+      }
+      res.status(200).json({ message: "User Created" });
+    }
   }
-
-
-
-const addUser = await SignUp.create(data);
-if (!addUser) {
-res.status(500).json("No user Added")
-
-}
-if(req.body.company_name){
-Comapny.create({name:req.body.company_name,user_id:addUser._id});
-}
-res.status(200).json("User Created");
-}
-}
-catch(error){
-  console.log('error:::::', error)
-  res.status(500).json({ msg: error.message })
-}
+  catch (error) {
+    console.log('error:::::', error)
+    res.status(500).json({ message: error.message })
+  }
 
 };
 
 
-const login =   (req,res) => {
+const login = (req, res) => {
 
-  try{
-  let fetchedUser;
-   SignUp.findOne({email:req.body.email}).then(user => {
-     facuser=req.body.email;
+  try {
+    let fetchedUser;
+    SignUp.findOne({ email: req.body.email }).then(user => {
+      facuser = req.body.email;
       if (!user) {
         return res.status(401).json({
           message: "Auth failed"
@@ -71,51 +84,51 @@ const login =   (req,res) => {
       fetchedUser = user;
 
 
-      return  bcrypt.compare(req.body.password, user.password);
+      return bcrypt.compare(req.body.password, user.password);
 
 
     })
-    .then(result => {
-      // console.log(fetchedUser);
-      if (!result) {
+      .then(result => {
+        // console.log(fetchedUser);
+        if (!result) {
+          return res.status(401).json({
+            message: "Auth failed"
+          });
+        }
+
+        if (fetchedUser.status == false) {
+          return res.status(401).json({
+            message: "Waiting for admin Approval"
+          })
+        }
+
+        /*  var x=  function e(){
+              return req.body.email;
+            }*/
+        const token = jwt.sign(
+          { email: fetchedUser.email, userId: fetchedUser._id },
+          process.env.JWT_KEY,
+          { expiresIn: "1h" }
+        );
+        res.status(200).json({
+          token: token,
+          expiresIn: 3600,
+          fetchedUser: fetchedUser
+        });
+      })
+      .catch(err => {
+        console.log(err);
         return res.status(401).json({
           message: "Auth failed"
         });
-      }
-
-      if(fetchedUser.status == false){
-        return res.status(401).json({
-          message: "Waiting for admin Approval"
-        })
-      }
-
-  /*  var x=  function e(){
-        return req.body.email;
-      }*/
-      const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
-        process.env.JWT_KEY,
-        { expiresIn: "1h" }
-      );
-      res.status(200).json({
-        token: token,
-        expiresIn: 3600,
-        fetchedUser:fetchedUser
       });
-    })
-    .catch(err => {
-console.log(err);
-      return res.status(401).json({
-        message: "Auth failed"
-      });
-    });
-  }catch(error){
-console.log(error)
+  } catch (error) {
+    console.log(error)
   }
 }
 
 
-module.exports={
+module.exports = {
   signup,
   login
 }

@@ -41,7 +41,7 @@ export class SignUpComponent implements OnInit {
   }
   optSelected(data) {
     let selectedValue = this.companyList.find(x => x == data);
-    console.log("::::", selectedValue);
+  
   }
   displayFn(Subject) {
 
@@ -65,19 +65,27 @@ export class SignUpComponent implements OnInit {
     if (this.data == "User") {
       delete myform.value.company_name;
 
-       myform.value.company_id=myform.value.company_id._id;
+      myform.value.company_id = myform.value.company_id._id;
     }
     if (myform.value.password != myform.value.repeat_password) {
       alert("password don't match");
       return;
-    } else {
-      console.log(myform.value);
-      delete myform.value.repeat_password;
-      this.api.post(environment.signup, myform.value).subscribe(data => {
-        this.open(this.content_);
-        this.router.navigate(['login']);
-      });
     }
+
+
+    this.checker = false;
+    this.api.post(environment.signup, myform.value).subscribe(data => {
+      this.checker = true;
+      this.message = "Successfully Registered";
+      this.open(this.content_);
+      this.router.navigate(['login']);
+    },
+      (err: any) => {
+
+        this.message = err.error;
+        this.open(this.content_);
+      });
+
   }
   closeResult: string;
 

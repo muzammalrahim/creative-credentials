@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+  numbers: number[];
+  company_name:any ='';
 
 
   constructor(
@@ -27,6 +29,7 @@ export class LandingPageComponent implements OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.numbers = Array(500).fill(0).map((x,i)=>i);
   }
   faBars = faBars;
   faHome = faHome;
@@ -42,9 +45,11 @@ export class LandingPageComponent implements OnInit {
 
 
   ngOnInit() {
+this.company_name =JSON.parse(localStorage.getItem('user'));
+
 
   }
-  // Get Current Location Coordinates
+
 
 
   logout() {

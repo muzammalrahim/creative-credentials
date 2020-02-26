@@ -82,7 +82,8 @@
     </button>
   </div>
   <div class="modal-body">
-    <h3>Successfully Registered</h3>
+    <h3 *ngIf="checker">Successfully Registered</h3>
+    <h3>{{message.message}}</h3>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">OK</button>
