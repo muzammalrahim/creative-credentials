@@ -1,3 +1,4 @@
+import { UsersComponent } from './modules/landing-page/users/users.component';
 
 import { AddCredentialsComponent } from './modules/landing-page/credentials/add-credentials/add-credentials.component';
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
@@ -32,7 +33,9 @@ const routes: Routes = [
 
     {path:'addprojects', component:AddProjectComponent},
     {path:'projects', component:ProjectsComponent},
-    
+
+    {path:'users', component:UsersComponent},
+
   ]},
 ];
 

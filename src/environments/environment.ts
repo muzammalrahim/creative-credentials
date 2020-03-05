@@ -10,6 +10,7 @@ export const environment = {
   login: `${baseUrl}login`,
   signup: `${baseUrl}signup`,
   companies: `${baseUrl}companies`,
+  companyusers: `${baseUrl}companyusers`,
 };
 
 /*

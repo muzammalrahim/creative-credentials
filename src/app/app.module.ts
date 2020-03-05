@@ -46,6 +46,9 @@ import { ProjectsComponent } from './modules/landing-page/projects/projects.comp
 import { AddProjectComponent } from './modules/landing-page/projects/add-project/add-project.component';
 import { ProjectTableComponent } from './modules/landing-page/projects/project-table/project-table.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { UsersComponent } from './modules/landing-page/users/users.component';
+import { UsersTableComponent } from './modules/landing-page/users/users-table/users-table.component';
+import { ColorDirectiveDirective } from './directives/color-directive.directive';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     ProjectsComponent,
     AddProjectComponent,
     ProjectTableComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    UsersComponent,
+    UsersTableComponent,
+    ColorDirectiveDirective
   ],
   imports: [
     BrowserModule,

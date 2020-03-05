@@ -1,3 +1,5 @@
+import { CompanyService } from './../../services/company.service';
+import { ApiWrapperService } from './../../services/apiwrapperservice';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, OnInit, Component, OnDestroy } from '@angular/core';
@@ -17,19 +19,21 @@ import { environment } from 'src/environments/environment';
 })
 export class LandingPageComponent implements OnInit {
   numbers: number[];
-  company_name:any ='';
+  company_name: any = '';
+  user: any;
 
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private router: Router,
-
+    private api: ApiWrapperService,
+    private companyService:CompanyService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.numbers = Array(500).fill(0).map((x,i)=>i);
+    this.numbers = Array(15).fill(0).map((x, i) => i+1);
   }
   faBars = faBars;
   faHome = faHome;
@@ -45,9 +49,7 @@ export class LandingPageComponent implements OnInit {
 
 
   ngOnInit() {
-this.company_name =JSON.parse(localStorage.getItem('user'));
-
-
+    this.company_name=this.companyService.getCompanyName();
   }
 
 

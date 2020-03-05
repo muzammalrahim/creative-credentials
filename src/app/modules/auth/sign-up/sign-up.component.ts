@@ -41,7 +41,7 @@ export class SignUpComponent implements OnInit {
   }
   optSelected(data) {
     let selectedValue = this.companyList.find(x => x == data);
-  
+
   }
   displayFn(Subject) {
 

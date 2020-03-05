@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+}
+
+.wrapper {
+  width: 90%;
+  position: relative;
+  margin: auto;
+}
+
+th {
+  font-size: 16px;
+  font-weight: bold;
+  background: lightgray;
+}
+
+.success {
+  width: 50%;
+  background: blue;
+  color: white;
+  padding: 10px 10px;
+}
+
+.notsuccess {
+  width: 50%;
+  background: lightgrey;
+  color: black;
+  padding: 10px 10px;
+}
+// .inner-div{
+//   width:50%;
+// background:lightgrey;
+//   color:black;
+//   padding:10px 10px;
+// }

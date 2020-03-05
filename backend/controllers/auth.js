@@ -13,7 +13,7 @@ const signup = async (req, res) => {
     const existing_user = await SignUp.findOne({ email: email });
 
     if (existing_user) {
-      res.status(500).json({ message: "User Already exists" });
+     return res.status(500).json({ message: "User Already exists" });
     } else {
       if (req.body.role === "Admin") {
         const existing_company = await SignUp.findOne({ company_name: company_name });
@@ -53,11 +53,11 @@ const signup = async (req, res) => {
 
       const addUser = await SignUp.create(data);
       if (!addUser) {
-        res.status(500).json({ message: "No user Added" })
+       return res.status(500).json({ message: "No user Added" })
 
       }
       if (req.body.company_name) {
-        Comapny.create({ name: req.body.company_name, user_id: addUser._id });
+        Comapny.create({ name: req.body.company_name.toLowerCase(), user_id: addUser._id });
       }
       res.status(200).json({ message: "User Created" });
     }

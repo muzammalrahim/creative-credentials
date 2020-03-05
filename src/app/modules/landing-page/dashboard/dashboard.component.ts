@@ -1,5 +1,7 @@
+import { ApiWrapperService } from './../../../services/apiwrapperservice';
 import { Component, OnInit } from '@angular/core';
-import { faCity, faAddressCard,faMap ,faUserFriends} from '@fortawesome/free-solid-svg-icons';
+import { faCity, faAddressCard, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +9,17 @@ import { faCity, faAddressCard,faMap ,faUserFriends} from '@fortawesome/free-sol
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-cards;
-  constructor() { }
+  cards;
+  user: any;
+  constructor(private api: ApiWrapperService) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user.company_name);
+    this.api.post(environment.companyusers, { company_name: this.user.company_name }).subscribe(users => {
+      this.cards[0].stat[0].statValue = users.length;
+    });
+
     this.cards = [
 
       // {
@@ -30,12 +39,12 @@ cards;
         icon: faAddressCard,
         heading: ' Users',
         background: '#800080',
-        routerLink: '../credentials',
+        routerLink: '../users',
         stat: [
-          // {
-          //   statName: 'Total Revenue',
-          //   statValue: 33397
-          // },
+          {
+            statName: 'Current Users',
+            statValue: ''
+          },
         ]
       },
       {

@@ -1,0 +1,5 @@
+<h3 class="main-heading">Users</h3>
+<div class="center">
+<mat-spinner *ngIf="!checker" ></mat-spinner>
+</div>
+<app-users-table *ngIf="checker" [incommingData]="users"></app-users-table>

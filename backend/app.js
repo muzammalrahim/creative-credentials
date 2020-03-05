@@ -1,11 +1,11 @@
-const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const authroutes =require("./routes/auth")
 const companyroutes =require("./routes/company")
-
+const usersroutes =require("./routes/users")
 const app = express();
 //QT44EaNJfnmWedIs
 //"mongodb+srv://fahad:WiAlrRRZKWjBtdct@cluster0-irxzc.mongodb.net/Comsats?retryWrites=true
@@ -23,7 +23,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("./images")));
+
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -41,4 +41,5 @@ app.use((req, res, next) => {
 
 app.use("/api", authroutes);
 app.use("/api", companyroutes);
+app.use("/api", usersroutes);
 module.exports = app;
