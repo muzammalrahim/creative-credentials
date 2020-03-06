@@ -4,5 +4,7 @@
             <button mat-raised-button [routerLink]="['../addprojects']" color="primary" > <fa-icon [icon]="faPlus"></fa-icon> Add New Project</button>
         </div>
     </div>
-
-<app-project-table [incommingData]="list"></app-project-table>
+<div class="d-flex justify-content-center">
+  <mat-spinner *ngIf="!checker"></mat-spinner>
+</div>
+<app-project-table *ngIf="checker" [incommingData]="projects"></app-project-table>

@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 
-const baseUrl ='http://localhost:3000/api/';
+const baseUrl = 'http://localhost:3000/api/';
 
 export const environment = {
   production: false,
@@ -11,6 +11,11 @@ export const environment = {
   signup: `${baseUrl}signup`,
   companies: `${baseUrl}companies`,
   companyusers: `${baseUrl}companyusers`,
+
+  addproject: `${baseUrl}addproject`,
+  addclient: `${baseUrl}addclient`,
+  getclients: `${baseUrl}getclients`,
+  getprojects: `${baseUrl}getprojects`,
 };
 
 /*

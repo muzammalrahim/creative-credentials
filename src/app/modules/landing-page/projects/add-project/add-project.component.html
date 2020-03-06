@@ -1,18 +1,42 @@
 <h3 class="main-heading">Add New Project</h3>
 <div class="form-wrapper">
-    <form [formGroup]="clientForm" (ngSubmit)="submit()">
+    <form [formGroup]="projectForm" (ngSubmit)="submit()">
         <div class="fields-wrapper">
             <div class="field">
-              <mat-form-field><input formControlName="clientName"  matInput placeholder="Client Name" type="text"></mat-form-field>
+              <mat-form-field><input formControlName="title"  matInput placeholder="Title" type="text"></mat-form-field>
+            </div>
+            <div class=" text-area ">
+              <div class=" border border-secondary  inner-div">
+                <mat-form-field><textarea matInput formControlName="description" placeholder="Enter Description" rows="4" cols="50"></textarea></mat-form-field>
+              </div>
             </div>
             <div class="field">
-                <mat-form-field><input  formControlName="clientDetails" matInput placeholder="Client Details" type="text"  ></mat-form-field>
+              <mat-form-field><input formControlName="note"  matInput placeholder="Note" type="text"></mat-form-field>
             </div>
+            <div class="field">
+              <mat-form-field>
+                <input type="text" placeholder="Select Company " aria-label="Number" matInput formControlName="clientName"
+                 (input)='optSelected($event.target.value)'
+                style="padding:7px 92px" placeholder="Client Name" [matAutocomplete]="auto">
+              </mat-form-field>
+              <mat-autocomplete #auto="matAutocomplete"
+                (optionSelected)="optSelected($event.option.value)">
+                <mat-option *ngFor="let select of clients | searchFilter: projectForm.controls['clientName'].value" [value]="select">
+                  {{select.name}}
+                </mat-option>
+              </mat-autocomplete>
 
+
+
+
+
+            </div>
+            <div class="field">
+              <mat-form-field><input formControlName="site"  matInput placeholder="Site" type="text"></mat-form-field>
+            </div>
             <div class="button-wrapper">
               <button mat-raised-button type="submit" color="primary">Save</button>
           </div>
-          
         </div>
     </form>
 </div>

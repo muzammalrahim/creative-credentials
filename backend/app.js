@@ -3,9 +3,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const authroutes =require("./routes/auth")
-const companyroutes =require("./routes/company")
-const usersroutes =require("./routes/users")
+const authroutes =require("./routes/auth");
+const companyroutes =require("./routes/company");
+const usersroutes =require("./routes/users");
+
+const projectroutes = require("./routes/projects");
+const clientroutes = require("./routes/clients")
 const app = express();
 //QT44EaNJfnmWedIs
 //"mongodb+srv://fahad:WiAlrRRZKWjBtdct@cluster0-irxzc.mongodb.net/Comsats?retryWrites=true
@@ -42,4 +45,6 @@ app.use((req, res, next) => {
 app.use("/api", authroutes);
 app.use("/api", companyroutes);
 app.use("/api", usersroutes);
+app.use("/api", projectroutes);
+app.use("/api", clientroutes);
 module.exports = app;

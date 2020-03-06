@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Signup =require("../models/signup");
+
 
 const companySchema = mongoose.Schema({
   name: { type: String, required: true },

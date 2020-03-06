@@ -1,19 +1,23 @@
 
 .fields-wrapper {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  flex-flow: row wrap ;
+  justify-content: center;
+
   .field {
-      flex: 0 1 48%;
+      flex: 0 1 100%;
+      display:flex;
+      flex-flow: row nowrap;
+      justify-content: center;
       mat-form-field {
-          width: 100%;
+          width: 50%;
       }
   }
 }
 
 .button-wrapper {
-  flex: 0 2 100%;
+  flex: 0 0 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: center;
 }

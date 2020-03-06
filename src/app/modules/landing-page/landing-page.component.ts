@@ -28,12 +28,12 @@ export class LandingPageComponent implements OnInit {
     media: MediaMatcher,
     private router: Router,
     private api: ApiWrapperService,
-    private companyService:CompanyService
+    private companyService: CompanyService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.numbers = Array(15).fill(0).map((x, i) => i+1);
+    this.numbers = Array(15).fill(0).map((x, i) => i + 1);
   }
   faBars = faBars;
   faHome = faHome;
@@ -49,7 +49,7 @@ export class LandingPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.company_name=this.companyService.getCompanyName();
+    this.company_name = this.companyService.getCompanyName();
   }
 
 

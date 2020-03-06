@@ -4,5 +4,7 @@
             <button mat-raised-button [routerLink]="['../addclients']" color="primary" > <fa-icon [icon]="faPlus"></fa-icon> Add New Client</button>
         </div>
     </div>
-
-<app-clients-table  [incommingData]="list"></app-clients-table>
+<div class="d-flex justify-content-center">
+<mat-spinner *ngIf="!checker"></mat-spinner>
+</div>
+<app-clients-table *ngIf="checker" [incommingData]="clients"></app-clients-table>

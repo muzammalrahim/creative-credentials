@@ -1,3 +1,4 @@
+import { CompanyService } from './../../../services/company.service';
 import { ApiWrapperService } from './../../../services/apiwrapperservice';
 import { Component, OnInit } from '@angular/core';
 import { faCity, faAddressCard, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
@@ -11,15 +12,27 @@ import { environment } from 'src/environments/environment';
 export class DashboardComponent implements OnInit {
   cards;
   user: any;
-  constructor(private api: ApiWrapperService) { }
+  comapny_name: any;
+  constructor(private api: ApiWrapperService,private companyService:CompanyService) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user.company_name);
-    this.api.post(environment.companyusers, { company_name: this.user.company_name }).subscribe(users => {
+    this.comapny_name = this.companyService.getCompanyName();
+    this.api.post(environment.companyusers, { company_name: this.comapny_name }).subscribe(users => {
       this.cards[0].stat[0].statValue = users.length;
     });
 
+
+
+    this.api.post(environment.getprojects,{company_name:this.comapny_name}).subscribe(res => {
+      this.cards[2].stat[0].statValue=res.projects.length;
+
+    });
+
+
+    this.api.post(environment.getclients,{company_name: this.comapny_name}).subscribe(res => {
+
+        this.cards[3].stat[0].statValue=res.clients.length;
+    });
     this.cards = [
 
       // {
@@ -65,10 +78,10 @@ export class DashboardComponent implements OnInit {
         background: '#FFA500',
         routerLink: '../projects',
         stat: [
-          // {
-          //   statName: 'Total Revenue',
-          //   statValue: 33397
-          // },
+          {
+            statName: 'Current Projects',
+            statValue: '',
+          },
         ]
       },
       {
@@ -78,13 +91,13 @@ export class DashboardComponent implements OnInit {
         routerLink: '../clients',
         stat: [
           {
-            statName: 'Total Clients',
+            statName: 'Current Clients',
             statValue: ''
           },
-          {
-            statName: 'Total Tasks',
-            statValue: ''
-          }
+          // {
+          //   statName: 'Total Tasks',
+          //   statValue: ''
+          // }
         ]
       },
 
