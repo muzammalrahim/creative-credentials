@@ -1,6 +1,6 @@
 # CreativeCredentials
 
-Creative Credentials Project was created using Mean Stack Technology.It uses Angular as Front end and Node as Backend.they are using angular cli(8.3.25) and node version (12.16.0).
+Creative Credentials Project was created using Mean Stack Technology.It uses Angular as Front end and Node as Backend.we are using angular cli(8.3.25) and node version (12.16.0).
 
 The backend folder contains the node backend. We used MVC model . All models ,Views and Controllers are in separate folder.
 In this MongoDB cloud is used for storing data.
