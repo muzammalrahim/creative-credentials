@@ -5,12 +5,15 @@ Creative Credentials Project was created using Mean Stack Technology.It uses Ang
 The backend folder contains the node backend. We used MVC model . All models ,Views and Controllers are in separate folder.
 In this MongoDB cloud is used for storing data.
 
-## Development server
 
+
+## Development server
+![ScreenShot](creative_credentials_dashboard.png)
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 To run backend server use this command `npm run start:server`
 
+![ScreenShot](login.png)
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
