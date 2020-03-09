@@ -7,7 +7,8 @@
             </div>
             <div class=" text-area ">
               <div class=" border border-secondary  inner-div">
-                <mat-form-field><textarea matInput formControlName="description" placeholder="Enter Description" rows="4" cols="50"></textarea></mat-form-field>
+                <!-- <mat-form-field><textarea matInput formControlName="description"  rows="4" cols="50"></textarea></mat-form-field> -->
+         <ejs-richtexteditor formControlName="description"></ejs-richtexteditor>
               </div>
             </div>
             <div class="field">
@@ -25,11 +26,6 @@
                   {{select.name}}
                 </mat-option>
               </mat-autocomplete>
-
-
-
-
-
             </div>
             <div class="field">
               <mat-form-field><input formControlName="site"  matInput placeholder="Site" type="text"></mat-form-field>

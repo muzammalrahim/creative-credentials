@@ -1,6 +1,5 @@
 import { UsersComponent } from './modules/landing-page/users/users.component';
 
-import { AddCredentialsComponent } from './modules/landing-page/credentials/add-credentials/add-credentials.component';
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
 import { ClientsComponent } from './modules/landing-page/clients/clients.component';
 import { DashboardComponent } from './modules/landing-page/dashboard/dashboard.component';
@@ -28,7 +27,7 @@ const routes: Routes = [
     {path:'addclients', component:AddClientsComponent},
 
 
-    {path:'addcredentials', component:AddCredentialsComponent},
+
     {path:'credentials', component:CredentialsComponent},
 
     {path:'addprojects', component:AddProjectComponent},

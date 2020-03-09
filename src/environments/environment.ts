@@ -16,6 +16,8 @@ export const environment = {
   addclient: `${baseUrl}addclient`,
   getclients: `${baseUrl}getclients`,
   getprojects: `${baseUrl}getprojects`,
+
+  credentials: `${baseUrl}credentials`,
 };
 
 /*

@@ -9,6 +9,7 @@ const usersroutes =require("./routes/users");
 
 const projectroutes = require("./routes/projects");
 const clientroutes = require("./routes/clients")
+const credentialsroutes = require("./routes/credentials")
 const app = express();
 //QT44EaNJfnmWedIs
 //"mongodb+srv://fahad:WiAlrRRZKWjBtdct@cluster0-irxzc.mongodb.net/Comsats?retryWrites=true
@@ -47,4 +48,5 @@ app.use("/api", companyroutes);
 app.use("/api", usersroutes);
 app.use("/api", projectroutes);
 app.use("/api", clientroutes);
+app.use("/api", credentialsroutes);
 module.exports = app;

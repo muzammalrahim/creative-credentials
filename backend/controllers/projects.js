@@ -67,7 +67,7 @@ var getProjects = async (req, res) => {
     }
 
 
-    var projectfound = await Projects.find({company_id:companyid._id}).populate('client_id');
+    var projectfound = await Projects.find({company_id:companyid._id},'title').populate('client_id','name');
     if(!projectfound){
       return res.status(500).json("Error No Project found")
     }

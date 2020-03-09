@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         icon: faAddressCard,
-        heading: ' Credentials',
+        heading: 'Credentials',
         background: '#013220',
         routerLink: '../credentials',
         stat: [

@@ -17,7 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import { DashboardComponent } from './modules/landing-page/dashboard/dashboard.component';
-import { CardsComponent } from './modules/landing-page/dashboard/cards/cards.component';
+import { CardsComponent } from './shared/cards/cards.component';
 import { ClientsComponent } from './modules/landing-page/clients/clients.component';
 import { ClientsTableComponent } from './modules/landing-page/clients/clients-table/clients-table.component';
 
@@ -38,18 +38,18 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
 import { CredentialsComponent } from './modules/landing-page/credentials/credentials.component';
-import { AddCredentialsComponent } from './modules/landing-page/credentials/add-credentials/add-credentials.component';
-import { CredentialsTableComponent } from './modules/landing-page/credentials/credentials-table/credentials-table.component';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectsComponent } from './modules/landing-page/projects/projects.component';
 import { AddProjectComponent } from './modules/landing-page/projects/add-project/add-project.component';
 import { ProjectTableComponent } from './modules/landing-page/projects/project-table/project-table.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { SearchFilterPipe } from './shared/pipes/search-filter.pipe';
 import { UsersComponent } from './modules/landing-page/users/users.component';
 import { UsersTableComponent } from './modules/landing-page/users/users-table/users-table.component';
-import { ColorDirectiveDirective } from './directives/color-directive.directive';
+import { ColorDirectiveDirective } from './shared/directives/color-directive.directive';
 
+
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,8 +62,7 @@ import { ColorDirectiveDirective } from './directives/color-directive.directive'
     ClientsTableComponent,
     AddClientsComponent,
     CredentialsComponent,
-    AddCredentialsComponent,
-    CredentialsTableComponent,
+
     ProjectsComponent,
     AddProjectComponent,
     ProjectTableComponent,
@@ -94,7 +93,9 @@ import { ColorDirectiveDirective } from './directives/color-directive.directive'
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+
+    RichTextEditorAllModule
 
   ],
   providers: [],

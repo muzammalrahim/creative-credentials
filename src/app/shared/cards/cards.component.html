@@ -1,11 +1,11 @@
 <div class="mat-elevation-z8 stat-wrapper" [style.background-color]="statCardData.background">
   <div class="graphic-wrapper">
       <div class="icon-wrapper">
-          <fa-icon [icon]='statCardData.icon' size="4x"></fa-icon>
+         <ng-container *ngIf="no"><span>{{no+1}} </span></ng-container> <fa-icon [icon]='statCardData.icon' size="4x"></fa-icon>
       </div>
 
       <div class="text-area">
-              <h1 class="stat-heading">{{statCardData.heading}}</h1>
+              <h1 class="stat-heading">{{ statCardData.heading}}</h1>
               <div class="sub-text">
 
               <div class='stat-values-grid' *ngFor='let stat of statCardData.stat'>
