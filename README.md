@@ -9,12 +9,12 @@ In this MongoDB cloud is used for storing data.
 
 ## Development server
 
-![alt text](https://raw.githubusercontent.com/muzammalrahim/creative-credentials/master/login.png)
+![alt text](https://github.com/muzammalrahim/creative-credentials/blob/master/creative_credentials_dashboard.PNG)
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 To run backend server use this command `npm run start:server`
 
-![Image description](/login.png)
+![Image description](https://github.com/muzammalrahim/creative-credentials/blob/master/login.PNG)
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
