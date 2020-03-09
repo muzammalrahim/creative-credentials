@@ -18,6 +18,9 @@ export const environment = {
   getprojects: `${baseUrl}getprojects`,
 
   credentials: `${baseUrl}credentials`,
+
+  projdescription: `${baseUrl}projdescription`,
+
 };
 
 /*

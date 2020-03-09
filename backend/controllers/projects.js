@@ -79,7 +79,39 @@ var getProjects = async (req, res) => {
 
 }
 
+var projDescription = async(req,res)=>{
+
+  try {
+    const companyName = await signup.findOne({company_name:req.body.company_name.toLowerCase(),status:true,role:'Admin'});
+    if(!companyName){
+     return res.status(500).json("No users found");
+    }
+
+    console.log("===============",companyName.company_name);
+    var companyid =await company.findOne({name:companyName.company_name});
+
+
+    if(!companyid){
+      return res.status(500).json("No company found");
+    }
+
+
+    var projectfound = await Projects.findOne({company_id:companyid._id,_id:req.body.project_id},'description');
+    if(!projectfound){
+      return res.status(500).json("Error No Project found")
+    }
+
+
+    res.status(200).json({message:"Successfully Found ",projects:projectfound});
+  }catch(error){
+
+  }
+
+}
+
+
 module.exports = {
   addprojects,
-  getProjects
+  getProjects,
+  projDescription
 }
