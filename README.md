@@ -9,7 +9,7 @@ In this MongoDB cloud is used for storing data.
 
 ## Development server
 
-![Image description](creative_crdentials_dashboard.png)
+![alt text](https://raw.githubusercontent.com/muzammalrahim/creative-credentials/master/login.png)
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 To run backend server use this command `npm run start:server`
