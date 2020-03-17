@@ -8,10 +8,11 @@ In this MongoDB cloud is used for storing data.
 
 
 ## Development server
+ This Project will be used to handle projects in a  company .It will save credentials of projects and it is used to share project description to employees and it will also be used to monitor on which project employee is currently working on.
 
 ![alt text](https://github.com/muzammalrahim/creative-credentials/blob/master/creative_credentials_dashboard.PNG)
 
-    This Project will be used to handle projects in a  company .It will save credentials of projects and it is used to share project description to employees and it will also be used to monitor on which project employee is currently working on.
+
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
