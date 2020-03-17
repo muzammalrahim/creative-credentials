@@ -14,16 +14,16 @@ th {
   background: lightgray;
 }
 
-.success {
+.notsuccess {
   width: 50%;
-  background: blue;
+  background: darkgray;
   color: white;
   padding: 10px 10px;
 }
 
-.notsuccess {
+.success {
   width: 50%;
-  background: lightgrey;
+  background: white;
   color: black;
   padding: 10px 10px;
 }

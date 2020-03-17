@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { CompanyService } from './../../services/company.service';
 import { ApiWrapperService } from './../../services/apiwrapperservice';
 
@@ -8,7 +9,8 @@ import {
   faBars,
   faHome,
   faAddressCard,
-  faUserFriends
+  faUserFriends,
+  faArrowAltCircleDown
 } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +22,8 @@ import { environment } from 'src/environments/environment';
 export class LandingPageComponent implements OnInit {
   numbers: number[];
   company_name: any = '';
-  user: any;
+  users: any;
+  newrequests: any;
 
 
   constructor(
@@ -28,17 +31,19 @@ export class LandingPageComponent implements OnInit {
     media: MediaMatcher,
     private router: Router,
     private api: ApiWrapperService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private authService: AuthService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.numbers = Array(15).fill(0).map((x, i) => i + 1);
+    // this.numbers = Array(15).fill(0).map((x, i) => i + 1);
   }
   faBars = faBars;
   faHome = faHome;
   faUserFriends = faUserFriends;
   faAddressCard = faAddressCard;
+  faArrowAltCircleDown = faArrowAltCircleDown;
 
   selected = true;
   loading = false;
@@ -49,13 +54,27 @@ export class LandingPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.company_name = this.companyService.getCompanyName();
+
+this.companyService.companyUpdateListner().subscribe(data => {
+this.company_name=data;
+this.api.post(environment.companyusers, { company_name: this.company_name }).subscribe(users => {
+  this.users = users.filter(filter => {
+    return filter.status == false;
+  });
+
+  this.newrequests = this.users.length;
+});
+    });
+
+  }
+
+  emitter() {
+    this.ngOnInit();
   }
 
 
-
   logout() {
-
+    this.authService.logout();
   }
 
 

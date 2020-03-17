@@ -4,7 +4,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { IfStmt } from '@angular/compiler';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -18,10 +18,46 @@ export class AddProjectComponent implements OnInit {
   clients: any;
   projectForm: any;
   company_name: any;
-
-  constructor(private fb: FormBuilder, private api: ApiWrapperService, private el: ElementRef, private router: Router, private companyService: CompanyService) { }
+  mode = "";
+  project_id: any;
+  constructor(private fb: FormBuilder, private api: ApiWrapperService, private el: ElementRef, private router: Router, private companyService: CompanyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.createForm();
+    this.route.paramMap.subscribe((paramMap) => {
+      if (paramMap.has('id')) {
+        this.mode = "edit";
+        this.project_id = paramMap.get('id');
+        this.api.get(environment.getprojbyid + paramMap.get('id')).subscribe(res => {
+          console.log("client_name", res.project[0].client_id.name);
+          if (res) {
+            this.projectForm.setValue({
+              title: res.project[0].title,
+              description: res.project[0].description,
+              note: res.project[0].note,
+              site: res.project[0].site,
+              clientName: res.project[0].client_id.name,
+              client_id: res.project[0].client_id._id
+            });
+          }
+        });
+
+      } else {
+        this.mode = "create";
+      }
+    });
+
+
+    this.company_name = this.companyService.getCompanyName();
+    //getting clients list
+    this.checker = false;
+    this.api.post(environment.getclients, { company_name: this.company_name }).subscribe(res => {
+      this.checker = true;
+      this.clients = res.clients;
+    });
+  }
+
+  createForm() {
     this.projectForm = this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -32,13 +68,7 @@ export class AddProjectComponent implements OnInit {
 
     });
 
-    this.company_name = this.companyService.getCompanyName();
-    //getting clients list
-    this.checker = false;
-    this.api.post(environment.getclients,{company_name:this.company_name}).subscribe(res => {
-      this.checker = true;
-      this.clients = res.clients;
-    });
+
   }
   // displayFn(Subject) {
 
@@ -58,7 +88,7 @@ export class AddProjectComponent implements OnInit {
 
   }
   submit() {
-    this.projectForm.value.company_name=this.companyService.getCompanyName();
+    this.projectForm.value.company_name = this.companyService.getCompanyName();
     if (this.projectForm.invalid) {
       for (const key of Object.keys(this.projectForm.controls)) {
         this.key = key;
@@ -74,12 +104,19 @@ export class AddProjectComponent implements OnInit {
     console.log(this.projectForm.value);
     delete this.projectForm.value.clientName;
     console.log(this.projectForm.value);
+    if (this.mode == "create") {
+      this.api.post(environment.addproject, this.projectForm.value).subscribe(res => {
+        if (res) {
+          this.router.navigate(['landingPage', 'projects'])
+        }
+      });
+    } else {
+      this.api.put(environment.updateprojbyid + this.project_id, this.projectForm.value).subscribe(res => {
+        if (res) {
+          this.router.navigate(['landingPage', 'projects'])
+        }
+      });
 
-    this.api.post(environment.addproject, this.projectForm.value).subscribe(res => {
-      if (res) {
-        this.router.navigate(['landingPage', 'projects'])
-      }
-    });
+    }
   }
-
 }

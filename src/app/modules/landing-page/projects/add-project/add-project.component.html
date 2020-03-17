@@ -1,4 +1,5 @@
-<h3 class="main-heading">Add New Project</h3>
+<h3 *ngIf="mode =='create'" class="main-heading">Add New Project</h3>
+<h3 *ngIf="mode =='edit'" class="main-heading">Edit Project</h3>
 <div class="form-wrapper">
     <form [formGroup]="projectForm" (ngSubmit)="submit()">
         <div class="fields-wrapper">

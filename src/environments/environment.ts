@@ -20,7 +20,13 @@ export const environment = {
   credentials: `${baseUrl}credentials`,
 
   projdescription: `${baseUrl}projdescription`,
+  statusupdate: `${baseUrl}statusupdate/`,
 
+  getprojbyid: `${baseUrl}getprojbyid/`,
+  updateprojbyid: `${baseUrl}updateprojbyid/`,
+
+  updatecompany: `${baseUrl}updatecompany`,
+  getSingleCompany: `${baseUrl}getSingleCompany`,
 };
 
 /*

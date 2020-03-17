@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class ProjectTableComponent implements OnInit {
 
   @Input() incommingData: any;
-  displayedColumns: string[] = ['row', 'title', 'name'];
+  displayedColumns: string[] = ['row', 'title', 'name', 'action'];
   dataSource: MatTableDataSource<any>;
 
 

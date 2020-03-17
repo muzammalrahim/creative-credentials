@@ -1,3 +1,5 @@
+
+
 import { UsersComponent } from './modules/landing-page/users/users.component';
 
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
@@ -13,33 +15,37 @@ import { CredentialsComponent } from './modules/landing-page/credentials/credent
 import { AddProjectComponent } from './modules/landing-page/projects/add-project/add-project.component';
 import { ProjectTableComponent } from './modules/landing-page/projects/project-table/project-table.component';
 import { ProjectsComponent } from './modules/landing-page/projects/projects.component';
-
+import {AuthGuard} from './services/auth.guard';
+import { SettingsComponent } from './modules/landing-page/settings/settings.component';
 
 const routes: Routes = [
   {path:'' , redirectTo:'login' , pathMatch:'full'},
   {path:'login' , component:LoginComponent},
   {path:'signup' , component:SignUpComponent},
 
-  {path:'landingPage' , component:LandingPageComponent ,children:[
-    {path: '' , redirectTo:'dash' , pathMatch:'full' },
-    {path: 'dash' , component: DashboardComponent},
-    {path:'clients', component:ClientsComponent},
-    {path:'addclients', component:AddClientsComponent},
+  {path:'landingPage' , component:LandingPageComponent , canActivate:[AuthGuard],children:[
+    {path: '' , redirectTo:'dash' , pathMatch:'full' , canActivate:[AuthGuard]},
+    {path: 'dash' , component: DashboardComponent, canActivate:[AuthGuard]},
+    {path:'clients', component:ClientsComponent, canActivate:[AuthGuard]},
+    {path:'addclients', component:AddClientsComponent, canActivate:[AuthGuard]},
 
 
 
-    {path:'credentials', component:CredentialsComponent},
+    {path:'credentials', component:CredentialsComponent, canActivate:[AuthGuard]},
 
-    {path:'addprojects', component:AddProjectComponent},
-    {path:'projects', component:ProjectsComponent},
+    {path:'addprojects', component:AddProjectComponent, canActivate:[AuthGuard]},
+    {path:'projects', component:ProjectsComponent, canActivate:[AuthGuard]},
+    {path:'editprojects/:id', component:AddProjectComponent, canActivate:[AuthGuard]},
+    {path:'users', component:UsersComponent, canActivate:[AuthGuard]},
 
-    {path:'users', component:UsersComponent},
+    {path:'settings', component:SettingsComponent,canActivate:[AuthGuard]}
 
   ]},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

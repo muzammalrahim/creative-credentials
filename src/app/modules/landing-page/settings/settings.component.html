@@ -1,0 +1,37 @@
+<!-- <div class="wrapper">
+<form [formGroup]="settingsForm" (ngSubmit)="submit()">
+
+
+
+  <mat-form-field><input formControlName="company_name"  placeholder="Company Name" type="text" /></mat-form-field>
+
+
+
+<div>
+<button type="submit">Submit</button>
+</div>
+</form>
+</div> -->
+<div class="wrapper mt-4">
+
+  <div class="form-wrapper mat-elevation-z8">
+<h3 class="ml-2">Edit Company</h3>
+    <div class="form-inner">
+  <form [formGroup]="settingsForm" (ngSubmit)="submit()">
+
+      <div class="fields-wrapper">
+
+          <div class="field">
+           <mat-form-field><input formControlName="company_name"  matInput placeholder="Company Name" type="text"></mat-form-field>
+          </div>
+
+
+          <div class="button-wrapper">
+            <button mat-raised-button type="submit" color="primary">Save</button>
+        </div>
+
+      </div>
+  </form>
+</div>
+</div>
+</div>

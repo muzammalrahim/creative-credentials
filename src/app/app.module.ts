@@ -50,6 +50,10 @@ import { ColorDirectiveDirective } from './shared/directives/color-directive.dir
 
 
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+
+import { ChangeStatusPipe } from './shared/pipes/change-status.pipe';
+import { SettingsComponent } from './modules/landing-page/settings/settings.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +73,11 @@ import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor'
     SearchFilterPipe,
     UsersComponent,
     UsersTableComponent,
-    ColorDirectiveDirective
+    ColorDirectiveDirective,
+
+    ChangeStatusPipe,
+
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

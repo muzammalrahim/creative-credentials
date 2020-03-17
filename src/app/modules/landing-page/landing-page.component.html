@@ -6,7 +6,7 @@
     <a [routerLink]="['dash']" [style.color]="'white'">
       <h6 class="example-app-name ml-2 ">Creative Credentials</h6>
     </a>
-<div class="badge" matBadge="15" matBadgeColor="warn">
+<div class="badge" [(matBadge)]="newrequests" matBadgeColor="warn">
   <div class="company-name">
   <h3>{{company_name}}</h3>
 </div>
@@ -14,10 +14,19 @@
 
 <mat-menu #menu="matMenu" >
   <pre> Need Approval </pre>
-  <span mat-menu-item *ngFor="let f of numbers ">{{f}}</span>
+  <span mat-menu-item *ngFor="let user of users ">{{user.name}}</span>
 
 </mat-menu>
+
 </div>
+
+<div class="ml-4">
+  <fa-icon [matMenuTriggerFor]="menu1"  [icon]="faArrowAltCircleDown" size='1x'></fa-icon>
+  <mat-menu #menu1="matMenu" >
+    <button mat-button [routerLink]="['settings']">Settings</button>
+
+  </mat-menu>
+  </div>
   </mat-toolbar>
 
   <mat-sidenav-container
@@ -78,7 +87,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <router-outlet ></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

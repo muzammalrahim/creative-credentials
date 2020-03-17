@@ -7,6 +7,7 @@ import { Subject } from "rxjs";
 
 import { environment } from "../../environments/environment";
 
+
 @Injectable({ providedIn: "root" })
 export class AuthService {
   emp_id: any;
@@ -71,7 +72,8 @@ export class AuthService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     localStorage.removeItem("token");
-    this.router.navigate(["/auth"]);
+    localStorage.removeItem("user");
+    this.router.navigate(["/login"]);
   }
 
   private getAuthData() {

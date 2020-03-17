@@ -2,4 +2,4 @@
 <div class="center">
 <mat-spinner *ngIf="!checker" ></mat-spinner>
 </div>
-<app-users-table *ngIf="checker" [incommingData]="users"></app-users-table>
+<app-users-table *ngIf="checker" [incommingData]="users" (changeEmitter)="emitter()"></app-users-table>

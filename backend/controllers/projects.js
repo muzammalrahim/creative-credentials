@@ -108,10 +108,57 @@ var projDescription = async(req,res)=>{
   }
 
 }
+const getprojbyid = async(req,res)=>{
+try{
+console.log("In project by id",req.params.id);
+var project = await Projects.find({_id:req.params.id}).populate('client_id','name');
+if(!project){
+  return res.status(400).json("No Project Found");
+}
+res.status(200).json({project:project});
 
+}catch(error){
+
+}
+
+}
+
+const updateprojbyid = async (req,res)=>{
+var id=req.params.id;
+  console.log("Update Project",id,req.body);
+try{
+var updateproject= await Projects.findOne({_id:req.params.id});
+if(updateproject){
+  const projects = new Projects ({
+    _id:id,
+    title:req.body.title,
+    description:req.body.description,
+    client_id:req.body.client_id,
+    site:req.body.site,
+    note:req.body.note,
+
+  })
+
+
+ var updated= await Projects.updateOne({_id:id},projects);
+
+ if(!updated){
+   return res.status(500).json("Not updated");
+ }
+res.status(200).json("Successfully Updated")
+}
+
+}catch(error){
+console.log(error);
+
+}
+
+}
 
 module.exports = {
   addprojects,
   getProjects,
-  projDescription
+  projDescription,
+  getprojbyid,
+  updateprojbyid
 }

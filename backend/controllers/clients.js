@@ -3,7 +3,7 @@ var signup = require('../models/signup');
 var company = require('../models/company');
 
 const clients = async (req, res) => {
-  console.log(":::::::::::::::;", req.body);
+
 
   try {
 

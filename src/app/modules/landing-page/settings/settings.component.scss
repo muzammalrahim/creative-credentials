@@ -1,0 +1,16 @@
+.wrapper{
+  display:flex;
+  justify-content: center;
+  align-content: center;
+}
+.form-wrapper{
+  height:300px;
+  border:2px solid black;
+  width:50%;
+
+}
+.form-inner{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
