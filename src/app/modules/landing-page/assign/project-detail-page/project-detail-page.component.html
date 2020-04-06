@@ -1,0 +1,80 @@
+<div class="wrapper mat-elevation-z8">
+<form [formGroup]="projectForm">
+<div class="flex-container">
+  <div class="flex-item2 mb-4">
+<h2 class="ml-2 mt-4">Project Detail Page</h2>
+</div>
+</div>
+
+<div class="flex-item1">
+  <label class=" ml-4">Title:</label>
+  <div class="d-inline ml-4">
+  <mat-form-field><input formControlName="title"  matInput  type="text" readonly></mat-form-field>
+</div>
+  </div>
+<div class="flex-item1">
+  <label class=" ml-4 lead">Status:</label>
+<mat-radio-group aria-label="Select an option">
+  <mat-radio-button color="primary" class="px-4" value="1" disabled>Complete</mat-radio-button>
+  <mat-radio-button color="primary" class="px-4" value="2" disabled>InProgress</mat-radio-button>
+  <mat-radio-button color="primary" class="px-4" value="3" disabled>InComplete</mat-radio-button>
+</mat-radio-group>
+</div>
+
+<div class="flex-item1">
+  <label class=" ml-4">Users Working On:</label>
+  <div class="d-inline ml-4">
+  <mat-form-field><input matInput  type="text" readonly></mat-form-field>
+</div>
+<div class="d-inline ml-4">
+  <mat-form-field><input  matInput  type="text" readonly></mat-form-field>
+</div>
+<div class="d-inline ml-4">
+  <mat-form-field><input  matInput  type="text" readonly></mat-form-field>
+</div>
+  </div>
+
+  <div class="flex-item1">
+    <label class=" ml-4">starting date:</label>
+    <div class="d-inline ml-4">
+    <mat-form-field><input  matInput  type="date" readonly></mat-form-field>
+  </div>
+    </div>
+
+    <div class="flex-item1">
+      <label class=" ml-4">Total Credit Hrs:</label>
+      <div class="d-inline ml-4">
+      <mat-form-field><input  matInput  type="text" readonly></mat-form-field>
+    </div>
+      </div>
+
+    <div class="flex-item1">
+      <label class="ml-2">Project Description:</label>
+      <div class="d-inline ml-4">
+   <ejs-richtexteditor formControlName="description" readonly></ejs-richtexteditor>
+    </div>
+      </div>
+
+      <div class="flex-item1">
+        <label class="ml-2">Client Name:</label>
+        <div class="d-inline ml-4">
+          <mat-form-field><input  matInput formControlName="clientName" type="text" readonly></mat-form-field>
+      </div>
+      <div class="flex-item1">
+        <label class="ml-2">Site:</label><div class="d-inline ml-4"> <mat-form-field><input formControlName="site"  matInput  type="text" readonly></mat-form-field></div>
+      </div>
+      <div class="flex-item1">
+        <label class="ml-2">Note:</label>
+        <div class="d-inline ml-4">
+        <mat-form-field>
+         <input formControlName="note"  matInput  type="text" readonly>
+          </mat-form-field>
+        </div>
+      </div>
+        </div>
+        <!-- <div class="mt-4 text-center">
+          <button mat-raised-button color="primary" class="w-25 mb-4" (click)="submit()">Submit</button>
+        </div> -->
+      </form>
+</div>
+

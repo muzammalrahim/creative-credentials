@@ -27,6 +27,14 @@ export const environment = {
 
   updatecompany: `${baseUrl}updatecompany`,
   getSingleCompany: `${baseUrl}getSingleCompany`,
+  getclientbyid: `${baseUrl}getclientbyid/`,
+
+  updateclientbyid: `${baseUrl}updateclientbyid/`,
+
+  assignproj: `${baseUrl}assignproj/`,
+
+  getAssignedProj: `${baseUrl}getAssignedProj/`,
+
 };
 
 /*

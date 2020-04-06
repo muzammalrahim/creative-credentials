@@ -96,7 +96,7 @@ var projDescription = async(req,res)=>{
     }
 
 
-    var projectfound = await Projects.findOne({company_id:companyid._id,_id:req.body.project_id},'description');
+    var projectfound = await Projects.findOne({company_id:companyid._id,_id:req.body.project_id});
     if(!projectfound){
       return res.status(500).json("Error No Project found")
     }
@@ -118,7 +118,7 @@ if(!project){
 res.status(200).json({project:project});
 
 }catch(error){
-
+res.status(400).json(error);
 }
 
 }

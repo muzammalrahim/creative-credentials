@@ -74,7 +74,7 @@ const login = (req, res) => {
 
   try {
     let fetchedUser;
-    SignUp.findOne({ email: req.body.email }).then(user => {
+    SignUp.findOne({ email: req.body.email }).populate('company_id').then(user => {
       facuser = req.body.email;
       if (!user) {
         return res.status(401).json({

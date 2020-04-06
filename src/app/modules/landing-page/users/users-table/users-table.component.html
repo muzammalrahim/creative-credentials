@@ -32,7 +32,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Add /Remove From Company</th>
-        <td mat-cell *matCellDef="let row"><div (click)="toggle(row._id,row.status)"><div class="mat-elevation-z2" [ngClass]="row.status ? 'success' : 'notsuccess'"  appColorDirective>{{row.status | changeStatus}}</div></div></td>
+        <td mat-cell *matCellDef="let row"><div (click)="toggle(row._id,row.status)"><div class="mat-elevation-z2" [ngClass]="row.status ? 'success' : 'notsuccess'"  appColorDirective color="darkgray">{{row.status | changeStatus}}</div></div></td>
       </ng-container>
 
 

@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./project-table.component.scss']
 })
 export class ProjectTableComponent implements OnInit {
-
+ @Input() type;
   @Input() incommingData: any;
   displayedColumns: string[] = ['row', 'title', 'name', 'action'];
   dataSource: MatTableDataSource<any>;

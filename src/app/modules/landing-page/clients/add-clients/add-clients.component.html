@@ -1,4 +1,5 @@
-<h3 class="main-heading">Add New Client</h3>
+<h3 *ngIf="mode =='create'" class="main-heading">Add New Client</h3>
+<h3 *ngIf="mode =='edit'" class="main-heading">Edit Client</h3>
 <div class="form-wrapper">
     <form [formGroup]="clientForm" (ngSubmit)="submit()">
         <div class="fields-wrapper">

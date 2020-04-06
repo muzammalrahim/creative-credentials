@@ -13,6 +13,7 @@ import {
   faArrowAltCircleDown
 } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-landing-page',
@@ -24,7 +25,7 @@ export class LandingPageComponent implements OnInit {
   company_name: any = '';
   users: any;
   newrequests: any;
-
+  company_name$:any =new Subject();
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -54,9 +55,10 @@ export class LandingPageComponent implements OnInit {
 
 
   ngOnInit() {
-
-this.companyService.companyUpdateListner().subscribe(data => {
+this.companyService.getCompanyName();
+this.company_name$=this.companyService.companyUpdateListner().subscribe(data => {
 this.company_name=data;
+});
 this.api.post(environment.companyusers, { company_name: this.company_name }).subscribe(users => {
   this.users = users.filter(filter => {
     return filter.status == false;
@@ -64,7 +66,7 @@ this.api.post(environment.companyusers, { company_name: this.company_name }).sub
 
   this.newrequests = this.users.length;
 });
-    });
+
 
   }
 
@@ -78,7 +80,10 @@ this.api.post(environment.companyusers, { company_name: this.company_name }).sub
   }
 
 
+ngOnDestroy(): void {
+  this.company_name$.unsubscribe();
 
+}
 
 }
 

@@ -1,0 +1,21 @@
+.wrapper{
+  width:80%;
+  margin:auto;
+  margin-top:9px;
+}
+.flex-container{
+  display:flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+
+}
+.flex-item1{
+  flex:1 1 100%;
+  margin-bottom: 9px;
+}
+
+.flex-item2{
+  flex:1 1 100%;
+  display:flex;
+  justify-content: center;
+}

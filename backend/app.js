@@ -10,6 +10,8 @@ const usersroutes =require("./routes/users");
 const projectroutes = require("./routes/projects");
 const clientroutes = require("./routes/clients")
 const credentialsroutes = require("./routes/credentials")
+
+const assignsroutes = require("./routes/assign")
 const app = express();
 //QT44EaNJfnmWedIs
 //"mongodb+srv://fahad:WiAlrRRZKWjBtdct@cluster0-irxzc.mongodb.net/Comsats?retryWrites=true
@@ -49,4 +51,5 @@ app.use("/api", usersroutes);
 app.use("/api", projectroutes);
 app.use("/api", clientroutes);
 app.use("/api", credentialsroutes);
+app.use("/api", assignsroutes);
 module.exports = app;

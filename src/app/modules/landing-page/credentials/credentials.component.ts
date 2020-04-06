@@ -5,6 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-credentials',
   templateUrl: './credentials.component.html',
@@ -21,7 +22,8 @@ export class CredentialsComponent implements OnInit {
   description: any;
   project_id: any;
   object_send: { company_name: any; project_id: any; };
-  constructor(private api: ApiWrapperService, private modalService: NgbModal, private companyService: CompanyService) { }
+  projTitle: any;
+  constructor(private api: ApiWrapperService, private modalService: NgbModal, private companyService: CompanyService,private router:Router) { }
 
   ngOnInit() {
     this.checker = false;
@@ -63,18 +65,20 @@ export class CredentialsComponent implements OnInit {
   }
 
   cardFunction(project_id) {
-    console.log("cardfunction", project_id);
-    this.company_name = this.companyService.getCompanyName();
-    this.project_id = project_id;
-    this.object_send = { company_name: this.company_name, project_id: this.project_id };
+    // console.log("cardfunction", project_id);
+    // this.company_name = this.companyService.getCompanyName();
+    // this.project_id = project_id;
+    // this.object_send = { company_name: this.company_name, project_id: this.project_id };
 
-    this.api.post(environment.projdescription, this.object_send).subscribe(data => {
-      this.description = data.projects.description;
-      console.log("kjkjk", data.projects,this.description);
-      this.open(this.content_);
+    // this.api.post(environment.projdescription, this.object_send).subscribe(data => {
+    //   this.description = data.projects.description;
+    //   this.projTitle = data.projects.title;
+    //   console.log("kjkjk", data.projects,this.description);
+    //   this.open(this.content_);
 
-    }
-    )
+    // }
+    // )
+    this.router.navigate(['landingPage','project-detail-page',project_id])
   }
 
 

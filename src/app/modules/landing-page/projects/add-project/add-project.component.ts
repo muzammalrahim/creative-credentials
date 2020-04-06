@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { IfStmt } from '@angular/compiler';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-add-project',
@@ -20,6 +21,7 @@ export class AddProjectComponent implements OnInit {
   company_name: any;
   mode = "";
   project_id: any;
+  usercompany$: any = new Subject();
   constructor(private fb: FormBuilder, private api: ApiWrapperService, private el: ElementRef, private router: Router, private companyService: CompanyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -88,7 +90,9 @@ export class AddProjectComponent implements OnInit {
 
   }
   submit() {
-    this.projectForm.value.company_name = this.companyService.getCompanyName();
+    this.companyService.getCompanyName();
+    this.usercompany$=this.companyService.companyUpdateListner().subscribe(data => {
+    this.projectForm.value.company_name = data;
     if (this.projectForm.invalid) {
       for (const key of Object.keys(this.projectForm.controls)) {
         this.key = key;
@@ -118,5 +122,11 @@ export class AddProjectComponent implements OnInit {
       });
 
     }
+  });
   }
+
+  ngOnDestroy(): void {
+    this.usercompany$.unsubscribe();
+  }
+
 }

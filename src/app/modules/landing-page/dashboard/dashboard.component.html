@@ -1,6 +1,14 @@
+<button *ngIf="backbutton" mat-raised-button color="primary" class="float-left mt-4 ml-4" (click)="back()"><fa-icon class="mr-2"[icon]="faBackward"></fa-icon>Back</button>
 <div class='dashcards'>
+
   <div class='dashcards-grid' *ngFor="let card of cards">
 <app-cards [routerLink]="[card.routerLink]" [statCardData]="card"></app-cards>
 </div>
 </div>
 
+
+<div class='assigncard'>
+  <div class='assign-dashcards-grid' *ngFor ="let assign of assigncard">
+<app-cards (click)="onclick(assign.heading)" [routerLink]="assign.routerLink" [statCardData]="assign"></app-cards>
+</div>
+</div>

@@ -12,7 +12,7 @@ export class CardsComponent implements OnInit {
   @Input() statCardData;
   @Input() no;
   ngOnInit() {
-    console.log("In cards.........",this.statCardData);
+    // console.log("In cards.........",this.statCardData);
   }
 
 }

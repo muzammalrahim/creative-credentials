@@ -8,7 +8,7 @@
     </a>
 <div class="badge" [(matBadge)]="newrequests" matBadgeColor="warn">
   <div class="company-name">
-  <h3>{{company_name}}</h3>
+  <h3>{{company_name | titlecase}}</h3>
 </div>
 <fa-icon [matMenuTriggerFor]="menu"  [icon]="faHome" size='2x'></fa-icon>
 
@@ -23,8 +23,16 @@
 <div class="ml-4">
   <fa-icon [matMenuTriggerFor]="menu1"  [icon]="faArrowAltCircleDown" size='1x'></fa-icon>
   <mat-menu #menu1="matMenu" >
-    <button mat-button [routerLink]="['settings']">Settings</button>
-
+    <button appColorDirective color="darkgray"   class="w-100" mat-button [routerLink]="['settings']">Settings</button>
+    <button
+    class="w-100"
+    mat-button
+    appColorDirective
+    color="darkgray"
+    (click)="logout()"
+  >
+    Logout
+  </button>
   </mat-menu>
   </div>
   </mat-toolbar>
@@ -51,7 +59,7 @@
           </mat-list-item>
 
           <mat-list-item
-            [routerLink]="['cities']"
+            [routerLink]="['clients']"
             [routerLinkActive]="['active']"
           >
             <span><fa-icon [icon]="faUserFriends" size="1x"></fa-icon></span>
@@ -59,12 +67,20 @@
           </mat-list-item>
 
           <mat-list-item
-            [routerLink]="['googlemap']"
+            [routerLink]="['credentials']"
             [routerLinkActive]="['active']"
           >
             <span><fa-icon [icon]="faAddressCard" size="1x"></fa-icon></span>
             <span class="pl-3">Credentials</span>
           </mat-list-item>
+
+          <mat-list-item
+          [routerLink]="['projects']"
+          [routerLinkActive]="['active']"
+        >
+          <span><fa-icon [icon]="faAddressCard" size="1x"></fa-icon></span>
+          <span class="pl-3">Projects</span>
+        </mat-list-item>
             <div>
           <button
             class="w-100 p-1 display-4 bottom"

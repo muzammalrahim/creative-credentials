@@ -12,7 +12,7 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 export class ClientsTableComponent implements OnInit {
 
   @Input() incommingData: any;
-  displayedColumns: string[] =  ['id', 'clientName', 'clientDetails'];
+  displayedColumns: string[] =  ['id', 'clientName', 'clientDetails','action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

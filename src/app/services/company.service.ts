@@ -14,9 +14,13 @@ getCompanyName(){
   this.user = JSON.parse(localStorage.getItem('user'));
 
   if(this.user) {
-
+if(this.user.company_name == undefined){
+  this.subject.next(this.user.company_id.name);
+  return this.user.company_id.name;
+}else{
   this.subject.next(this.user.company_name);
   return this.user.company_name;
+}
   }else{
     return null;
   }

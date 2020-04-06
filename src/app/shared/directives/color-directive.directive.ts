@@ -1,15 +1,15 @@
-import { Directive, ElementRef, Renderer2, OnInit, HostListener } from '@angular/core';
+import { Directive, ElementRef, Renderer2, OnInit, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appColorDirective]'
 })
 export class ColorDirectiveDirective  {
 
-
+@Input() color;
   constructor(private el:ElementRef,private renderer: Renderer2) { }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('yellow');
+    this.highlight(this.color);
     this.renderer.addClass(this.el.nativeElement,'mat-elevation-z8');
     this.el.nativeElement.style.color = 'black';
   }

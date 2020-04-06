@@ -1,7 +1,8 @@
+import { Subject } from 'rxjs';
 import { CompanyService } from './../../../services/company.service';
 import { ApiWrapperService } from './../../../services/apiwrapperservice';
 import { Component, OnInit } from '@angular/core';
-import { faCity, faAddressCard, faMap, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faCity, faAddressCard, faMap, faUserFriends, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,28 +11,44 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  faBackward = faBackward
   cards;
   user: any;
-  comapny_name: any;
-  constructor(private api: ApiWrapperService,private companyService:CompanyService) { }
+  company_name: any;
+  companyuser$:any = new Subject();
+  assigncard: any;
+  backbutton: boolean;
+  constructor(private api: ApiWrapperService, private companyService: CompanyService) { }
 
   ngOnInit() {
-    this.comapny_name = this.companyService.getCompanyName();
-    this.api.post(environment.companyusers, { company_name: this.comapny_name }).subscribe(users => {
-      this.cards[0].stat[0].statValue = users.length;
+    this.backbutton = false;
+    this.companyService.getCompanyName();
+    this.companyuser$ = this.companyService.companyUpdateListner().subscribe(data => {
+      this.company_name = data;
+    });
+    this.api.post(environment.companyusers, { company_name: this.company_name }).subscribe(users => {
+      if(users){
+      if (this.cards[0] != undefined) {
+        this.cards[0].stat[0].statValue = users.length;
+      }
+    }
     });
 
 
 
-    this.api.post(environment.getprojects,{company_name:this.comapny_name}).subscribe(res => {
-      this.cards[2].stat[0].statValue=res.projects.length;
+    this.api.post(environment.getprojects, { company_name: this.company_name }).subscribe(res => {
+      if (this.cards[2] != undefined) {
+        this.cards[2].stat[0].statValue = res.projects.length;
+      }
 
     });
 
 
-    this.api.post(environment.getclients,{company_name: this.comapny_name}).subscribe(res => {
+    this.api.post(environment.getclients, { company_name: this.company_name}).subscribe(res => {
 
-        this.cards[3].stat[0].statValue=res.clients.length;
+      if (this.cards[3] != undefined) {
+        this.cards[3].stat[0].statValue = res.clients.length;
+      }
     });
     this.cards = [
 
@@ -101,7 +118,60 @@ export class DashboardComponent implements OnInit {
         ]
       },
 
+
+
     ];
+    this.assigncard = [{
+      icon: faAddressCard,
+      heading: 'Assign',
+      background: '#ec2222'
+      // routerLink: '../assignproj',
+      // stat: [
+      //   {
+      //     statName: 'Current Users',
+      //     statValue: ''
+      //   },
+      // ]
+    }
+    ];
+
+  }
+  back() {
+    this.ngOnInit();
+  }
+  onclick(cardClicked) {
+
+    if (cardClicked == 'Assign') {
+      this.cards = [];
+      this.backbutton = true;
+      this.assigncard = [{
+        icon: faAddressCard,
+        heading: 'Assignment',
+        background: '#ec2222',
+        routerLink: '../assignproj',
+        // stat: [
+        //   {
+        //     statName: 'Current Users',
+        //     statValue: ''
+        //   },
+        // ]
+      }, {
+        icon: faAddressCard,
+        heading: 'View',
+        background: '#ec2222',
+        routerLink: '../view-assign-proj',
+        // stat: [
+        //   {
+        //     statName: 'Current Users',
+        //     statValue: ''
+        //   },
+        // ]
+      }
+      ];
+    }
+  }
+  ngOnDestroy(): void {
+    this.companyuser$.unsubscribe();
 
   }
 
