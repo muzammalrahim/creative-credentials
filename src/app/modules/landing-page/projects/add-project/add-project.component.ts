@@ -31,7 +31,7 @@ export class AddProjectComponent implements OnInit {
         this.mode = "edit";
         this.project_id = paramMap.get('id');
         this.api.get(environment.getprojbyid + paramMap.get('id')).subscribe(res => {
-          console.log("client_name", res.project[0].client_id.name);
+          // console.log("client_name", res.project[0].client_id.name);
           if (res) {
             this.projectForm.setValue({
               title: res.project[0].title,
@@ -79,7 +79,7 @@ export class AddProjectComponent implements OnInit {
 
   optSelected(data) {
     let selectedValue = this.clients.find(x => x == data);
-    console.log(selectedValue);
+    // console.log(selectedValue);
     if (selectedValue) {
       this.projectForm.patchValue({
         clientName: selectedValue.name,
@@ -93,6 +93,7 @@ export class AddProjectComponent implements OnInit {
     this.companyService.getCompanyName();
     this.usercompany$=this.companyService.companyUpdateListner().subscribe(data => {
     this.projectForm.value.company_name = data;
+  });
     if (this.projectForm.invalid) {
       for (const key of Object.keys(this.projectForm.controls)) {
         this.key = key;
@@ -105,9 +106,9 @@ export class AddProjectComponent implements OnInit {
       }
       return alert("Please enter " + this.key);
     }
-    console.log(this.projectForm.value);
+    // console.log(this.projectForm.value);
     delete this.projectForm.value.clientName;
-    console.log(this.projectForm.value);
+    // console.log(this.projectForm.value);
     if (this.mode == "create") {
       this.api.post(environment.addproject, this.projectForm.value).subscribe(res => {
         if (res) {
@@ -122,7 +123,7 @@ export class AddProjectComponent implements OnInit {
       });
 
     }
-  });
+
   }
 
   ngOnDestroy(): void {

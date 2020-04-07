@@ -40,7 +40,7 @@ export class AssignProjectComponent implements OnInit {
     this.checker = false;
     this.company$ = this.companyService.companyUpdateListner().subscribe(data => {
       this.company_name = data;
-      this.api.post(environment.credentials, { company_name: this.company_name }).subscribe(res => {
+      this.api.post(environment.getprojects, { company_name: this.company_name }).subscribe(res => {
         this.dropdownList = res.projects.map((proj, i) => {
           proj.item_id = i + 1;
           proj.item_text = proj.title;
@@ -103,22 +103,22 @@ export class AssignProjectComponent implements OnInit {
 
 
     this.selectedProject = this.dropdownList.filter((data) => data.item_id == item.item_id);
-    console.log(this.selectedProject);
+    // console.log(this.selectedProject);
   }
   onSelectAll(items: any) {
-    console.log(items);
+    // console.log(items);
   }
   onItemSelect1(item: any) {
     this.selectedUser = this.dropdownList1.filter((data) => data.item_id == item.item_id);
-    console.log(this.selectedUser);
+    // console.log(this.selectedUser);
   }
   onSelectAll1(items: any) {
-    console.log(items);
+    // console.log(items);
   }
 
   submit() {
     this.loading = true;
-    console.log('sub+' + 'mit');
+    // console.log('sub+' + 'mit');
     this.company$ = this.company$ = this.companyService.companyUpdateListner().subscribe(data => {
       this.company_name = data;
     });
@@ -127,11 +127,11 @@ export class AssignProjectComponent implements OnInit {
       user_id: this.selectedUser[0]._id,
       company_name: this.company_name
     };
-    console.log(this.data);
+    // console.log(this.data);
 
     this.assign$ = this.api.post(environment.assignproj, this.data).subscribe(res => {
       this.loading = false;
-      console.log(res);
+      // console.log(res);
       if (res) {
         Swal.fire({
           title: 'Successfully Assigned',
@@ -142,7 +142,7 @@ export class AssignProjectComponent implements OnInit {
 
         }).then(afterresolve => {
           this.checker = false;
-          console.log(afterresolve);
+          // console.log(afterresolve);
           this.dropdownList = [];
           this.dropdownList1 = [];
           this.selectedItems = [];
@@ -157,7 +157,33 @@ export class AssignProjectComponent implements OnInit {
         );
       }
 
-    });
+    },(error:any)=>{
+      this.loading = false;
+      Swal.fire({
+        title: 'Already Assigned',
+        text: 'Already Assigned',
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonText: 'Close',
+
+      }).then(afterresolve => {
+        this.checker = false;
+        // console.log(afterresolve);
+        this.dropdownList = [];
+        this.dropdownList1 = [];
+        this.selectedItems = [];
+        this.selectedItems1 = [];
+        this.dropdownSettings = {};
+        this.dropdownSettings1 = {};
+        this.ngOnInit();
+
+
+      }
+
+      );
+    }
+
+    );
   }
   ngOnDestroy(): void {
     this.company$.unsubscribe();

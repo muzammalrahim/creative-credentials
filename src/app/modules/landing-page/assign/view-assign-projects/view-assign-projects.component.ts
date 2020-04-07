@@ -4,6 +4,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-assign-projects',
@@ -38,7 +39,7 @@ export class ViewAssignProjectsComponent implements OnInit {
     this.api.post(environment.getAssignedProj, {company_name: this.company_name}).subscribe(res => {
       this.loading = false;
       this.incommingData = res.assigndata;
-      console.log( this.incommingData);
+      // console.log( this.incommingData);
       this.dataSource = new MatTableDataSource(this.incommingData);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -60,6 +61,32 @@ export class ViewAssignProjectsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+
+  }
+
+  remove(id){
+    Swal.fire({  title: 'Are you sure?',
+    text: "Are You Sure",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: "Remove",
+    cancelButtonText: 'No, keep it'})
+      .then(willDelete => {
+        // console.log(willDelete);
+        if (willDelete.value) {
+
+          this.api.delete(environment.removeassign,id).subscribe(res =>{
+            // console.log(res);
+            this.ngOnInit();
+          });
+        }
+
+
+
+      });
+
+
+
 
   }
 

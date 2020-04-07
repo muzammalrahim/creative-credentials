@@ -57,7 +57,6 @@ import {MatRadioModule} from '@angular/material/radio';
     ClientsTableComponent,
     AddClientsComponent,
     CredentialsComponent,
-
     ProjectsComponent,
     AddProjectComponent,
     ProjectTableComponent,
@@ -65,15 +64,10 @@ import {MatRadioModule} from '@angular/material/radio';
     UsersComponent,
     UsersTableComponent,
     ColorDirectiveDirective,
-
     ChangeStatusPipe,
-
     SettingsComponent,
-
     AssignProjectComponent,
-
     ViewAssignProjectsComponent,
-
     ProjectDetailPageComponent
   ],
   imports: [
@@ -102,7 +96,6 @@ import {MatRadioModule} from '@angular/material/radio';
     RichTextEditorAllModule,
     MatRadioModule,
     NgMultiSelectDropDownModule.forRoot()
-
   ],
   providers: [],
   bootstrap: [AppComponent]

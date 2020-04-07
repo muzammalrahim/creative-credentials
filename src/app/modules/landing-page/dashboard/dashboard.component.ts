@@ -15,19 +15,22 @@ export class DashboardComponent implements OnInit {
   cards;
   user: any;
   company_name: any;
-  companyuser$:any = new Subject();
+  companyuser$: any = new Subject();
   assigncard: any;
   backbutton: boolean;
+  role: any;
   constructor(private api: ApiWrapperService, private companyService: CompanyService) { }
 
   ngOnInit() {
     this.backbutton = false;
+
     this.companyService.getCompanyName();
     this.companyuser$ = this.companyService.companyUpdateListner().subscribe(data => {
       this.company_name = data;
     });
+    this.role = this.companyService.getRole();
     this.api.post(environment.companyusers, { company_name: this.company_name }).subscribe(users => {
-      if(users){
+      if (users){
       if (this.cards[0] != undefined) {
         this.cards[0].stat[0].statValue = users.length;
       }

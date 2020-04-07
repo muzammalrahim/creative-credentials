@@ -9,4 +9,5 @@ const assignController = require("../controllers/assign");
 
 router.post("/assignproj",assignController.assignproj);
 router.post("/getAssignedProj",assignController.getAssigned);
+router.delete("/removeassign/:id",assignController.remove);
 module.exports=router;

@@ -34,7 +34,8 @@ export const environment = {
   assignproj: `${baseUrl}assignproj/`,
 
   getAssignedProj: `${baseUrl}getAssignedProj/`,
-
+  removeassign: `${baseUrl}removeassign`,
+  totalusers: `${baseUrl}totalusers/`,
 };
 
 /*

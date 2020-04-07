@@ -11,15 +11,11 @@
   <h3>{{company_name | titlecase}}</h3>
 </div>
 <fa-icon [matMenuTriggerFor]="menu"  [icon]="faHome" size='2x'></fa-icon>
-
 <mat-menu #menu="matMenu" >
   <pre> Need Approval </pre>
   <span mat-menu-item *ngFor="let user of users ">{{user.name}}</span>
-
 </mat-menu>
-
 </div>
-
 <div class="ml-4">
   <fa-icon [matMenuTriggerFor]="menu1"  [icon]="faArrowAltCircleDown" size='1x'></fa-icon>
   <mat-menu #menu1="matMenu" >
@@ -36,7 +32,6 @@
   </mat-menu>
   </div>
   </mat-toolbar>
-
   <mat-sidenav-container
     class="example-sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
@@ -90,18 +85,10 @@
           >
             Logout
           </button>
-
-
-
         </div>
-
       </div>
-
-
       </mat-nav-list>
-
     </mat-sidenav>
-
     <mat-sidenav-content>
       <router-outlet ></router-outlet>
     </mat-sidenav-content>

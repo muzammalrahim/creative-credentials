@@ -12,7 +12,7 @@ const clients = async (req, res) => {
      return res.status(500).json("No users found");
     }
 
-    console.log("===============",companyName.company_name);
+    // console.log("===============",companyName.company_name);
     var companyid =await company.findOne({name:companyName.company_name});
 
 
@@ -52,7 +52,7 @@ const getClients = async(req,res)=>{
      return res.status(500).json("No users found");
     }
 
-    console.log("===============",companyName.company_name);
+    // console.log("===============",companyName.company_name);
     var companyid =await company.findOne({name:companyName.company_name});
 
 
@@ -75,7 +75,7 @@ const getClients = async(req,res)=>{
 const getclientbyid = async(req,res) =>{
 
   try{
-    console.log("In Client by id", req.params.id);
+    // console.log("In Client by id", req.params.id);
     var client = await Clients.find({_id:req.params.id});
     if(!client){
       return res.status(400).json("No Client Found");
@@ -90,7 +90,7 @@ const getclientbyid = async(req,res) =>{
 
 const updateclientbyid = async (req,res)=>{
   var id=req.params.id;
-    console.log("Update Client:::::::::::::",id,req.body);
+    // console.log("Update Client:::::::::::::",id,req.body);
   try{
   var clientget= await Clients.findOne({_id:id});
   if(clientget){

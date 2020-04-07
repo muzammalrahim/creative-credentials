@@ -40,7 +40,7 @@ export class SettingsComponent implements OnInit {
     this.settingsForm.value.company_id = this.company_id;
     this.settingsForm.value.user_id = user_id;
     this.api.post(environment.updatecompany, this.settingsForm.value).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       localStorage.removeItem("user");
       localStorage.setItem("user", JSON.stringify(res.fetchedUser));
       this.router.navigate(['landingPage']);

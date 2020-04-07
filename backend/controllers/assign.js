@@ -12,6 +12,11 @@ try{
   if(!companyid){
     return res.status(500).json("No company found");
   }
+  const checking = await assign.findOne({company_id:companyid._id,user_id:req.body.user_id,project_id:req.body.project_id});
+  if(checking){
+    console.log(checking);
+    return res.status(400).json("Project already assigned");
+  }
 
   if(!req.body){
     return res.status(500).json("No Body Found");
@@ -56,8 +61,21 @@ const getAssigned =async(req,res)=>{
 
   }
 }
+const remove = async(req,res)=>{
+try{
+const removeassign =await assign.remove({_id:req.params.id});
+if(!removeassign){
+return res.status(400).json("Error not removed");
+}
+res.status(200).json("Successfully Deleted");
+}catch(error){
+console.log(error);
+res.status(400).json(error);
+}
 
+}
 module.exports={
   assignproj,
-  getAssigned
+  getAssigned,
+  remove,
 }

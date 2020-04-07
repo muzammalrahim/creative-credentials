@@ -1,15 +1,11 @@
 import { ProjectDetailPageComponent } from './modules/landing-page/assign/project-detail-page/project-detail-page.component';
 import { ViewAssignProjectsComponent } from './modules/landing-page/assign/view-assign-projects/view-assign-projects.component';
 import { AssignProjectComponent } from './modules/landing-page/assign/assign-project/assign-project.component';
-
-
 import { UsersComponent } from './modules/landing-page/users/users.component';
-
 import { AddClientsComponent } from './modules/landing-page/clients/add-clients/add-clients.component';
 import { ClientsComponent } from './modules/landing-page/clients/clients.component';
 import { DashboardComponent } from './modules/landing-page/dashboard/dashboard.component';
 import { LandingPageComponent } from './modules/landing-page/landing-page.component';
-
 import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

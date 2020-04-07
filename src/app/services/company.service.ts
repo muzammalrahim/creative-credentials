@@ -40,4 +40,14 @@ getUserId(){
     return null;
   }
 }
+
+getRole(){
+
+  this.user = JSON.parse(localStorage.getItem('user'));
+  if(this.user) {
+  return this.user.role;
+  }else{
+    return null;
+  }
+}
 }

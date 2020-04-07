@@ -11,6 +11,8 @@ site:{type:String },
 company_id: { type: mongoose.Schema.Types.ObjectId, ref:"Company" ,required:true},
 description_checker:{type:Boolean, default: false},
 createdAt: {type: Date, default: Date.now},
+status:{type:String ,default:'2'},
+creditHrs:{type:String ,default:''}
 });
 
 module.exports=mongoose.model("Projects",projectSchema);

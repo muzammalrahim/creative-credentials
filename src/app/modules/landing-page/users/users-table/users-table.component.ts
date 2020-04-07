@@ -53,15 +53,15 @@ export class UsersTableComponent implements OnInit {
     confirmButtonText: this.btntext,
     cancelButtonText: 'No, keep it'})
       .then(willDelete => {
-        console.log(willDelete);
+        // console.log(willDelete);
         if (willDelete.value) {
 
 
 
-          console.log(this.confirmation, id);
+          // console.log(this.confirmation, id);
 
           this.api.put(environment.statusupdate + id).subscribe(data => {
-            console.log(data);
+            // console.log(data);
 
             this.changeEmitter.emit();
 
@@ -77,7 +77,7 @@ export class UsersTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.incommingData);
+    // console.log(this.incommingData);
     this.dataSource = new MatTableDataSource(this.incommingData);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -35,7 +35,9 @@ var addprojects = async (req, res) => {
       note:req.body.note,
       client_id:req.body.client_id,
       site:req.body.site,
-      company_id:companyid._id
+      company_id:companyid._id,
+      status:'2',
+      creditHrs:req.body.creditHrs
     });
 
     if(!projectadded){
@@ -66,7 +68,7 @@ var getProjects = async (req, res) => {
       return res.status(500).json("No company found");
     }
 
-
+    // var projects = await Projects.find({company_id:companyid._id},"title").populate('client_id','name');
     var projectfound = await Projects.find({company_id:companyid._id},'title').populate('client_id','name');
     if(!projectfound){
       return res.status(500).json("Error No Project found")
@@ -136,7 +138,8 @@ if(updateproject){
     client_id:req.body.client_id,
     site:req.body.site,
     note:req.body.note,
-
+    status:req.body.status,
+    creditHrs:req.body.creditHrs
   })
 
 

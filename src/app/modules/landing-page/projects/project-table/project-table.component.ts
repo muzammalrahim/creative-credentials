@@ -23,7 +23,7 @@ export class ProjectTableComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.incommingData);
+    // console.log(this.incommingData);
 
     this.dataSource = new MatTableDataSource(this.incommingData);
     this.dataSource.paginator = this.paginator;
