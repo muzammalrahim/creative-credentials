@@ -16,7 +16,7 @@
 </div>
 
 
-<div class='assigncard' *ngIf="role == 'Admin'">
+<div [class]="classchanger ? 'assigncard':'assigncard-no-pos'" *ngIf="role == 'Admin'">
   <div class='assign-dashcards-grid' *ngFor ="let assign of assigncard">
 <app-cards (click)="onclick(assign.heading)" [routerLink]="assign.routerLink" [statCardData]="assign"></app-cards>
 </div>

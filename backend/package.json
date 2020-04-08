@@ -1,0 +1,14 @@
+{
+  "name": "creative-credentials",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "hammerjs": "^2.0.8",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.0",
+    "nodemon": "^2.0.2"
+  }
+}

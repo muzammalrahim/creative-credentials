@@ -19,11 +19,12 @@ export class DashboardComponent implements OnInit {
   assigncard: any;
   backbutton: boolean;
   role: any;
+  classchanger:Boolean=true;
   constructor(private api: ApiWrapperService, private companyService: CompanyService) { }
 
   ngOnInit() {
     this.backbutton = false;
-
+    this.classchanger=true;
     this.companyService.getCompanyName();
     this.companyuser$ = this.companyService.companyUpdateListner().subscribe(data => {
       this.company_name = data;
@@ -146,6 +147,7 @@ export class DashboardComponent implements OnInit {
 
     if (cardClicked == 'Assign') {
       this.cards = [];
+      this.classchanger=false;
       this.backbutton = true;
       this.assigncard = [{
         icon: faAddressCard,
