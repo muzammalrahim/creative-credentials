@@ -1,6 +1,6 @@
-import { AuthService } from './../../services/auth.service';
-import { CompanyService } from './../../services/company.service';
-import { ApiWrapperService } from './../../services/apiwrapperservice';
+import { AuthService } from '../../../services/auth.service';
+import { CompanyService } from '../../../services/company.service';
+import { ApiWrapperService } from '../../../services/apiwrapperservice';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, OnInit, Component, OnDestroy } from '@angular/core';

@@ -17,8 +17,7 @@ const app = express();
 //"mongodb+srv://fahad:WiAlrRRZKWjBtdct@cluster0-irxzc.mongodb.net/Comsats?retryWrites=true
 mongoose
   .connect(
-    "mongodb+srv://fahad:"+process.env.MONGO_ATLAS_PW+
-      "@cluster0-irxzc.mongodb.net/creative-credentials?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true }
+    "mongodb+srv://fahad:euJ3By7k6P6NVCTL@cluster0-irxzc.mongodb.net/creative-credentials?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true }
   )
   .then(() => {
     console.log("Connected to database!");
@@ -26,6 +25,18 @@ mongoose
   .catch(() => {
     console.log("Connection failed!");
   });
+
+  // mongoose
+  // .connect(
+  //   "mongodb+srv://fahad:"+process.env.MONGO_ATLAS_PW+
+  //     "@cluster0-irxzc.mongodb.net/creative-credentials?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true }
+  // )
+  // .then(() => {
+  //   console.log("Connected to database!");
+  // })
+  // .catch(() => {
+  //   console.log("Connection failed!");
+  // });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

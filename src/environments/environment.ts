@@ -11,28 +11,20 @@ export const environment = {
   signup: `${baseUrl}signup`,
   companies: `${baseUrl}companies`,
   companyusers: `${baseUrl}companyusers`,
-
   addproject: `${baseUrl}addproject`,
   addclient: `${baseUrl}addclient`,
   getclients: `${baseUrl}getclients`,
   getprojects: `${baseUrl}getprojects`,
-
   credentials: `${baseUrl}credentials`,
-
   projdescription: `${baseUrl}projdescription`,
   statusupdate: `${baseUrl}statusupdate/`,
-
   getprojbyid: `${baseUrl}getprojbyid/`,
   updateprojbyid: `${baseUrl}updateprojbyid/`,
-
   updatecompany: `${baseUrl}updatecompany`,
   getSingleCompany: `${baseUrl}getSingleCompany`,
   getclientbyid: `${baseUrl}getclientbyid/`,
-
   updateclientbyid: `${baseUrl}updateclientbyid/`,
-
   assignproj: `${baseUrl}assignproj/`,
-
   getAssignedProj: `${baseUrl}getAssignedProj/`,
   removeassign: `${baseUrl}removeassign`,
   totalusers: `${baseUrl}totalusers/`,
