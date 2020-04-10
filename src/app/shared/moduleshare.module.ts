@@ -6,7 +6,7 @@ import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatProgressSpinner
 
 
 @NgModule({
-  declarations: [SearchFilterPipe],
+  declarations: [],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -42,7 +42,7 @@ import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatProgressSpinner
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    SearchFilterPipe
+    
   ]
 
 

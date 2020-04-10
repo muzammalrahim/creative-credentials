@@ -24,10 +24,10 @@ import { ColorDirectiveDirective } from 'src/app/shared/directives/color-directi
 import { ChangeStatusPipe } from 'src/app/shared/pipes/change-status.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -50,6 +50,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     UsersTableComponent,
     ColorDirectiveDirective,
     ChangeStatusPipe,
+
   ],
   imports: [
     CommonModule,
@@ -60,7 +61,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FontAwesomeModule,
     NgMultiSelectDropDownModule.forRoot(),
     FormsModule,
-    ModuleshareModule
+    ModuleshareModule,
+    PipesModule
   ]
 })
 export class LandingPageModule {

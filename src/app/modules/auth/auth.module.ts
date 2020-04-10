@@ -5,16 +5,15 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
-import { ModuleshareModule } from 'src/app/shared/moduleshare.module';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import { SearchFilterPipe } from 'src/app/shared/pipes/search-filter.pipe';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 @NgModule({
   declarations: [
     SignUpComponent,
     LoginComponent,
-    SearchFilterPipe
+
   ],
   imports: [
     CommonModule,
@@ -23,7 +22,7 @@ import { SearchFilterPipe } from 'src/app/shared/pipes/search-filter.pipe';
     MatAutocompleteModule,
     NgbModalModule,
     FormsModule,
-
+    PipesModule
   ]
 })
 export class AuthModule {
