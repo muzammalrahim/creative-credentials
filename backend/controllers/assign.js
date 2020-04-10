@@ -35,6 +35,7 @@ try{
 }
 catch(error){
   console.log(error);
+  res.status(400).json(error);
 }
 
 }
@@ -58,7 +59,7 @@ const getAssigned =async(req,res)=>{
     }
     res.status(200).json({assigndata:assigndata});
   }catch(error){
-
+    res.status(400).json(error);
   }
 }
 const remove = async(req,res)=>{

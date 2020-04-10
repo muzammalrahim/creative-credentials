@@ -65,7 +65,7 @@ export class ProjectDetailPageComponent implements OnInit {
   submit() {
     this.api.put(environment.updateprojbyid + this.project_id, this.projectForm.value).subscribe(res => {
       if (res) {
-        this.router.navigate(['landingPage', 'projects'])
+        this.router.navigate(['landingPage'])
       }
     });
   }

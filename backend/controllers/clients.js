@@ -39,6 +39,7 @@ const clients = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    res.status(400).json(error);
   };
 
 }
@@ -68,6 +69,7 @@ const getClients = async(req,res)=>{
 
   } catch (error) {
     console.log(error);
+    res.status(400).json(error);
   };
 }
 
@@ -109,7 +111,7 @@ const updateclientbyid = async (req,res)=>{
   }
   catch(error) {
   console.log(error);
-
+  res.status(400).json(error);
   }
 
   }

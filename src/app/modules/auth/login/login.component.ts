@@ -12,6 +12,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class LoginComponent implements OnInit {
   closeResult: string;
   message: any;
+  loading: boolean = false;
+
 
   constructor(private authService: AuthService, private modalService: NgbModal) { }
 
@@ -21,36 +23,38 @@ export class LoginComponent implements OnInit {
 
   }
 
-login(myform : NgForm) {
-this.authService.login(myform.value);
-this.authService.getAuthStatusListener().subscribe(listner => {
+  login(myform: NgForm) {
+    this.loading = true;
 
-  this.message = listner.message;
-  if (listner.status == false) {
-this.open(this.content_);
-}
-});
+    this.authService.login(myform.value);
+    this.authService.getAuthStatusListener().subscribe(listner => {
+      this.loading = this.authService.getIsAuth();
+      this.message = listner.message;
+      if (listner.status == false) {
+        this.open(this.content_);
+      }
+    });
 
-}
-
-
-
-open(content) {
-  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  });
-}
-
-private getDismissReason(reason: any): string {
-  if (reason === ModalDismissReasons.ESC) {
-    return 'by pressing ESC';
-  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-    return 'by clicking on a backdrop';
-  } else {
-    return `with: ${reason}`;
   }
-}
+
+
+
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 
 }

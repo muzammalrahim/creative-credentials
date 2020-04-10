@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CredentialsComponent implements OnInit {
   faPlus = faPlus;
-  cards: any=[];
+  cards: any = [];
   company_name: any;
   checker: boolean = false;
 
@@ -25,7 +25,7 @@ export class CredentialsComponent implements OnInit {
   projTitle: any;
   user_id: any;
   role: any;
-  constructor(private api: ApiWrapperService, private modalService: NgbModal, private companyService: CompanyService,private router:Router) { }
+  constructor(private api: ApiWrapperService, private modalService: NgbModal, private companyService: CompanyService, private router: Router) { }
 
   ngOnInit() {
     this.checker = false;
@@ -34,18 +34,36 @@ export class CredentialsComponent implements OnInit {
 
     this.role = this.companyService.getRole();
     // console.log(this.user_id);
-    this.api.post(environment.credentials, {company_name:this.company_name ,user_id: this.user_id,role:this.role }).subscribe(res => {
+    this.api.post(environment.credentials, { company_name: this.company_name, user_id: this.user_id, role: this.role }).subscribe(res => {
 
-      this.cards = res.assignedProj.map(data => {
-        data.icon = faProjectDiagram;
-        data.heading = data.project_id.title;
-        data.background = '#013220';
-        data.stat = [{
-          statName: 'Client Name:',
-          statValue: data.project_id.client_id.name
-        }]
 
-        return data;
+      const result = [];
+      const map = new Map();
+      for (const item of res.assignedProj) {
+        if (!map.has(item.project_id._id)) {
+          map.set(item.project_id._id, true);    // set any value to Map
+          result.push(item);
+        }
+      }
+      // console.log(result);
+
+
+
+      this.cards = result.map((data, i) => {
+
+
+          data.icon = faProjectDiagram;
+          data.heading = data.project_id.title;
+          data.background = '#013220';
+          data.stat = [{
+            statName: 'Client Name:',
+            statValue: data.project_id.client_id.name
+          }]
+
+          return data;
+
+
+
 
       });
       this.checker = true;
@@ -84,30 +102,30 @@ export class CredentialsComponent implements OnInit {
 
     // }
     // )
-    this.router.navigate(['landingPage','project-detail-page',project_id])
+    this.router.navigate(['landingPage', 'project-detail-page', project_id])
   }
 
 
 
 
 
-//   open(content) {
-//     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-//       this.closeResult = `Closed with: ${result}`;
-//     }, (reason) => {
-//       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-//     });
-//   }
+  //   open(content) {
+  //     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+  //       this.closeResult = `Closed with: ${result}`;
+  //     }, (reason) => {
+  //       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //     });
+  //   }
 
-//   private getDismissReason(reason: any): string {
-//     if (reason === ModalDismissReasons.ESC) {
-//       return 'by pressing ESC';
-//     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-//       return 'by clicking on a backdrop';
-//     } else {
-//       return `with: ${reason}`;
-//     }
-//   }
+  //   private getDismissReason(reason: any): string {
+  //     if (reason === ModalDismissReasons.ESC) {
+  //       return 'by pressing ESC';
+  //     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //       return 'by clicking on a backdrop';
+  //     } else {
+  //       return `with: ${reason}`;
+  //     }
+  //   }
 
 }
 

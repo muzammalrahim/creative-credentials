@@ -31,7 +31,7 @@ if(!getCompany){
 }
 res.status(200).json({getCompany:getCompany});
   }catch(error){
-
+    res.status(400).json(error);
 
   }
 
@@ -61,7 +61,7 @@ res.status(200).json({message:"Successfully updated",fetchedUser:fetched_user})
 
 }catch(error){
 
-
+  res.status(400).json(error);
 }
 
 }

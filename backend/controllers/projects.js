@@ -47,6 +47,7 @@ var addprojects = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    res.status(500).json(error);
   };
 
 }
@@ -77,6 +78,7 @@ var getProjects = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    res.status(500).json(error);
   };
 
 }
@@ -106,7 +108,7 @@ var projDescription = async(req,res)=>{
 
     res.status(200).json({message:"Successfully Found ",projects:projectfound});
   }catch(error){
-
+    res.status(500).json(error);
   }
 
 }
@@ -153,7 +155,7 @@ res.status(200).json("Successfully Updated")
 
 }catch(error){
 console.log(error);
-
+res.status(500).json(error);
 }
 
 }

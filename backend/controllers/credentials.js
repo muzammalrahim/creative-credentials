@@ -34,7 +34,7 @@ const credentials = async (req, res) => {
     res.status(200).json({ message: "Success", assignedProj: projects });
 
   } catch (error) {
-
+    res.status(400).json(error);
   }
 
 }

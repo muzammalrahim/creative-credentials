@@ -73,7 +73,7 @@
         </div>
       </div>
         </div>
-        <div class="mt-4 text-center" *ngIf="role == 'User'">
+        <div class="mt-4 text-center" *ngIf="role == 'User' || role == 'Admin' ">
           <button mat-raised-button color="primary" class="w-25 mb-4" (click)="submit()">Update Details</button>
         </div>
       </form>

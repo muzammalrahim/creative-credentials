@@ -1,4 +1,4 @@
-import { MatSelectModule, MatAutocompleteModule } from '@angular/material';
+import { MatSelectModule, MatAutocompleteModule, MatProgressSpinnerModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +20,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     AuthRoutingModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
     NgbModalModule,
     FormsModule,
     PipesModule

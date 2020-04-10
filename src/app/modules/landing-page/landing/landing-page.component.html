@@ -13,7 +13,7 @@
 <fa-icon [matMenuTriggerFor]="menu"  [icon]="faHome" size='2x'></fa-icon>
 <mat-menu #menu="matMenu" >
   <pre> Need Approval </pre>
-  <span mat-menu-item *ngFor="let user of users ">{{user.name}}</span>
+  <span mat-menu-item [routerLink]="['users']"  *ngFor="let user of users ">{{user.name}}</span>
 </mat-menu>
 </div>
 <div class="ml-4">
