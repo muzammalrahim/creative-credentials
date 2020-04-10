@@ -21,9 +21,9 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth'
+    redirectTo: ''
 },
-  {path:'auth' ,loadChildren:"./modules/auth/auth.module#AuthModule" },
+  {path:'' ,loadChildren:"./modules/auth/auth.module#AuthModule" },
   {path:'landingPage' , loadChildren:"./modules/landing-page/landing-page.module#LandingPageModule" },
 ];
 

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthModule } from './modules/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,8 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule,
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
