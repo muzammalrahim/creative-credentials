@@ -27,7 +27,6 @@ import { MatToolbarModule, MatSidenavModule, MatButtonModule, MatProgressSpinner
 
   ],
   exports:[
-    CommonModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
