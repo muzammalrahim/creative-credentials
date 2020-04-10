@@ -56,7 +56,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     LandingPageRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModalModule,
     RichTextEditorAllModule,
     FontAwesomeModule,
     NgMultiSelectDropDownModule.forRoot(),

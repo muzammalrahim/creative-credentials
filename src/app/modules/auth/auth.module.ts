@@ -21,12 +21,12 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     CommonModule,
     AuthRoutingModule,
     ModuleshareModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    // ReactiveFormsModule,
+    // HttpClientModule,
     NgbModalModule,
-    RichTextEditorAllModule,
-    FontAwesomeModule,
-    NgMultiSelectDropDownModule.forRoot(),
+    // RichTextEditorAllModule,
+    // FontAwesomeModule,
+    // NgMultiSelectDropDownModule.forRoot(),
     FormsModule,
 
   ]
