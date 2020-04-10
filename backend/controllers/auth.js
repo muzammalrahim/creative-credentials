@@ -1,7 +1,7 @@
 const SignUp = require("../models/signup");
 const Comapny = require("../models/company");
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const signup = async (req, res) => {
   try {
@@ -107,7 +107,7 @@ const login = (req, res) => {
             }*/
         const token = jwt.sign(
           { email: fetchedUser.email, userId: fetchedUser._id },
-          process.env.JWT_KEY,
+          "secret_this_should_be_longer",
           { expiresIn: "1h" }
         );
         res.status(200).json({
