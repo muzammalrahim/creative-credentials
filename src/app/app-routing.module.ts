@@ -23,7 +23,7 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: ''
 },
-  {path:'' ,loadChildren:"./modules/auth/auth.module#AuthModule" },
+  {path:'' , loadChildren:"./modules/auth/auth.module#AuthModule" },
   {path:'landingPage' , loadChildren:"./modules/landing-page/landing-page.module#LandingPageModule" },
 ];
 
